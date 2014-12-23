@@ -1,4 +1,4 @@
-Chadev Lunchables
+Chadev Voting Booth
 =======
 
 Simple voting app for measuring lunch quality and attendance during Chadev lunches.
