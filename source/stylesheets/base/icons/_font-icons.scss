@@ -1,8 +1,7 @@
 @include font-face("chadev-lunchables-icons", '/fonts/chadev-lunchables-icons');
 
-[data-icon]:before {
+%font-icon {
   font-family: "chadev-lunchables-icons" !important;
-  content: attr(data-icon);
   font-style: normal !important;
   font-weight: normal !important;
   font-variant: normal !important;
@@ -13,18 +12,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-[class^="icon-"]:before,
-[class*=" icon-"]:before {
-  font-family: "chadev-lunchables-icons" !important;
-  font-style: normal !important;
-  font-weight: normal !important;
-  font-variant: normal !important;
-  text-transform: none !important;
-  speak: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+[data-icon]:before {
+  content: attr(data-icon);
+  @extend %font-icon;
 }
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  @extend %font-icon;
+}
+
+// Mapped using fontastic.me
 
 .icon-face-sad:before {
   content: "s";
