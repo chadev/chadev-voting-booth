@@ -4,15 +4,11 @@ body {
   margin-top: 2em;
 }
 
-h1 {
-  text-transform: uppercase;
-  font-weight: 900;
-  font-size: 15em;
-  color: $white;
-  @include closed-text-shadow(5, $blue-dark);
-  @include animation(bounceInDown 1s);
+.branding {
+  margin: 5rem 0 1rem;
+  text-align: center;
 }
 
-.logo {
-  width: 250px;
+.branding-logo {
+  width: 120px;
 }

@@ -1,3 +1,13 @@
-<%= image_tag "chadev-logo.svg", class: 'logo' %>
 
-<h1 class="icon-face-happy"></h1>
+
+<div class="voting-booth">
+  <h1 class="voting-booth-prompt">How was today's lunch?</h1>
+  <ul class="voting-booth-items">
+    <% voting_emotions.each do |emotion| %>
+      <li class="voting-booth-item">
+        <button class="voting-booth-item-action icon-face-<%= emotion %>">
+        </button>
+      </li>
+    <% end %>
+  </ul>
+</div>
