@@ -1,4 +1,4 @@
-sandbox
+Chadev Lunchables
 =======
 
-Sass Playground
+Simple voting app for measuring lunch quality and attendance during Chadev lunches.
