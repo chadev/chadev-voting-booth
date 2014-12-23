@@ -1,10 +1,12 @@
 //  Colors
-$blue: #64A0f7;
-$yellow: #FAEC24;
+$blue-dark: #0E8CB8;
+$blue: #15A8DB;
 
-$gray-dark: #333;
-$gray: #999;
-$gray-light: #DDD;
+$gray-darker: #363637;
+$gray-dark: #535456;
+$gray: #919295;
+$gray-light: #D9DADC;
+$gray-lighter: #EFF0F2;
 
 $red-light: #FBE3E4;
 $yellow-light: #FFF6BF;
@@ -12,5 +14,3 @@ $green-light: #E6EFC2;
 
 $white: #FFF;
 $black: #000;
-
-$shade: darken($blue, 18%);
