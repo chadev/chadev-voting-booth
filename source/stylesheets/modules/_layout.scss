@@ -1,7 +1,7 @@
 body {
   background-color: $blue;
   text-align: center;
-  margin-top: 5em;
+  margin-top: 2em;
 }
 
 h1 {
@@ -11,4 +11,8 @@ h1 {
   color: $white;
   @include closed-text-shadow(5, $blue-dark);
   @include animation(bounceInDown 1s);
+}
+
+.logo {
+  width: 250px;
 }
