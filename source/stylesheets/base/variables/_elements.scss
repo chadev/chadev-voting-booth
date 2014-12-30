@@ -1,6 +1,9 @@
 // Background Color
 $base-background-color: $white;
 
+// Easing
+$base-easing: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+
 // Other Sizes
 $base-border-radius: 3px;
 $base-spacing: $base-line-height * 1rem;

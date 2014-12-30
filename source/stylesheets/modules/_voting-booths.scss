@@ -9,7 +9,7 @@
   margin-bottom: 2rem;
   opacity: 0;
   @include closed-text-shadow(15, $blue-dark);
-  @include animation(bounceInDown 0.75s);
+  @include animation(moveInDown 0.5s $base-easing);
   @include animation-delay(0.2s);
   @include animation-fill-mode(forwards);
   @include media($screen-sm) {
@@ -39,13 +39,23 @@
 .voting-booth-item-action {
   padding: 0;
   background: transparent !important;
-  @include closed-text-shadow(5, $blue-dark);
+  @include transform(scale3d(1, 1, 1));
+  @include user-select(none);
   i {
+    @include closed-text-shadow(5, $blue-dark);
     font-size: $font-size-xxxxl * 3;
+  }
+  &:active {
+    @include transition-timing-function($base-easing);
+    @include transform(scale3d(.9, .9, .9));
+  }
+  &:focus {
+    outline: 0;
   }
 }
 
 .voting-booth-item-description {
   font-size: $font-size-xxl;
   margin-top: -1rem;
+  @include closed-text-shadow(18, $blue-dark);
 }

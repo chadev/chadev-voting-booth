@@ -18,7 +18,7 @@ body {
   margin: 3rem 0 1rem;
   text-align: center;
   opacity: 0;
-  @include animation(bounceInDown 0.75s);
+  @include animation(moveInDown 0.5s $base-easing);
   @include animation-fill-mode(forwards);
   @include media($screen-sm) {
     margin-top: 5rem;
