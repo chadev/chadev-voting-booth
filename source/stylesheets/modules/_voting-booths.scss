@@ -1,23 +1,16 @@
 .voting-booth {
   color: $white;
-  @include transition(font-size 0.2s);
-  @include media($screen-sm) {
-    font-size: $font-size-lg;
-  }
-  @include media($screen-md) {
-    font-size: $font-size-xl;
-  }
-  @include media($screen-lg) {
-    font-size: $font-size-xxxl;
-  }
 }
 
 .voting-booth-prompt {
   text-transform: uppercase;
   @include closed-text-shadow(15, $blue-dark);
-  margin-bottom: 5rem;
   letter-spacing: 0.1em;
   font-size: $font-size-xxxl;
+  margin-bottom: 2rem;
+  @include media($screen-sm) {
+    margin-bottom: 5rem;
+  }
 }
 
 .voting-booth-items {

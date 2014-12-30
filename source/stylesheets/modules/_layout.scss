@@ -2,13 +2,29 @@ body {
   background: $blue image-url("background-patterns/science-illustration.png");
   text-align: center;
   margin-top: 2em;
+  @include transition(font-size 0.2s);
+  @include media($screen-sm) {
+    font-size: $font-size-lg;
+  }
+  @include media($screen-md) {
+    font-size: $font-size-xl;
+  }
+  @include media($screen-lg) {
+    font-size: $font-size-xxxl;
+  }
 }
 
 .branding {
-  margin: 5rem 0 1rem;
+  margin: 3rem 0 1rem;
   text-align: center;
+  @include media($screen-sm) {
+    margin-top: 5rem;
+  }
 }
 
 .branding-logo {
-  width: 120px;
+  width: 90px;
+  @include media($screen-sm) {
+    width: 120px;
+  }
 }
