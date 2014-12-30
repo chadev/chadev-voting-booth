@@ -1,11 +1,13 @@
-
-
 <div class="voting-booth">
   <h1 class="voting-booth-prompt">How was today's lunch?</h1>
   <ul class="voting-booth-items">
-    <% voting_emotions.each do |emotion| %>
+    <% voting_booth_items.each do |vote| %>
       <li class="voting-booth-item">
-        <button class="voting-booth-item-action icon-face-<%= emotion %>">
+        <button class="voting-booth-item-action">
+          <i class="icon-face-<%= vote[:emotion] %>"></i>
+          <div class="voting-booth-item-description">
+            <%= vote[:label] %>&hellip;
+          </div>
         </button>
       </li>
     <% end %>

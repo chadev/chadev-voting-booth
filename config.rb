@@ -42,8 +42,12 @@
 
 # Methods defined in the helpers block are available in templates
 helpers do
-  def voting_emotions
-    ["sad", "meh", "happy"]
+  def voting_booth_items
+    [
+      { emotion: "sad", label: "Enh" },
+      { emotion: "meh", label: "Meh" },
+      { emotion: "happy", label: "Mmm" }
+    ]
   end
 end
 

@@ -1,12 +1,23 @@
 .voting-booth {
   color: $white;
+  @include transition(font-size 0.2s);
+  @include media($screen-sm) {
+    font-size: $font-size-lg;
+  }
+  @include media($screen-md) {
+    font-size: $font-size-xl;
+  }
+  @include media($screen-lg) {
+    font-size: $font-size-xxxl;
+  }
 }
 
 .voting-booth-prompt {
   text-transform: uppercase;
   @include closed-text-shadow(15, $blue-dark);
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
   letter-spacing: 0.1em;
+  font-size: $font-size-xxxl;
 }
 
 .voting-booth-items {
@@ -28,18 +39,13 @@
 .voting-booth-item-action {
   padding: 0;
   background: transparent !important;
-  @include transition(font-size 0.2s);
   @include closed-text-shadow(5, $blue-dark);
-  @include media($screen-xs) {
-    font-size: $base-font-size * 6;
+  i {
+    font-size: $font-size-xxxxl * 3;
   }
-  @include media($screen-sm) {
-    font-size: $base-font-size * 9;
-  }
-  @include media($screen-md) {
-    font-size: $base-font-size * 12;
-  }
-  @include media($screen-lg) {
-    font-size: $base-font-size * 16;
-  }
+}
+
+.voting-booth-item-description {
+  font-size: $font-size-xxl;
+  margin-top: -1rem;
 }
