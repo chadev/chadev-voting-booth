@@ -4,10 +4,14 @@
 
 .voting-booth-prompt {
   text-transform: uppercase;
-  @include closed-text-shadow(15, $blue-dark);
   letter-spacing: 0.1em;
   font-size: $font-size-xxxl;
   margin-bottom: 2rem;
+  opacity: 0;
+  @include closed-text-shadow(15, $blue-dark);
+  @include animation(bounceInDown 0.75s);
+  @include animation-delay(0.2s);
+  @include animation-fill-mode(forwards);
   @include media($screen-sm) {
     margin-bottom: 5rem;
   }
@@ -25,7 +29,10 @@
   text-transform: uppercase;
   list-style: none;
   color: $white;
-  @include animation(bounceInDown 1s);
+  opacity: 0;
+  @include animation(bounceIn 1s);
+  @include animation-fill-mode(forwards);
+  @include animation-delay(0.75s);
   @include span-columns(4);
 }
 
