@@ -9,7 +9,7 @@ CHADEV.votingBooth = {
 
     $('.voting-booth').addClass('is-active');
 
-    $('button.voting-booth-item-action').one('click', function() {
+    $('button.voting-booth-item-action').one('mouseup', function() {
       $('.voting-booth').removeClass('is-active');
 
       var vote = $(this).parent().data('vote');
