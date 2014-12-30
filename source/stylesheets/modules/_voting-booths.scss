@@ -15,7 +15,6 @@
   letter-spacing: 0.1em;
   font-size: $font-size-xxl;
   margin-bottom: 2rem;
-  @include closed-text-shadow(15, $blue-dark);
   opacity: 0;
   .voting-booth.is-active & {
     @include animation(moveInDown 0.5s $base-easing);
@@ -54,8 +53,7 @@
   @include transform(scale3d(1, 1, 1));
   @include user-select(none);
   i {
-    @include closed-text-shadow(5, $blue-dark);
-    font-size: $font-size-xxxxl * 3;
+    font-size: $font-size-xxxxl * 3.5;
   }
   &:active {
     @include transition-timing-function($base-easing);
@@ -69,7 +67,6 @@
 .voting-booth-item-description {
   font-size: $font-size-xxl;
   margin-top: -1rem;
-  @include closed-text-shadow(18, $blue-dark);
 }
 
 .voting-booth-result {
@@ -98,7 +95,6 @@
   i {
     // @include animation(bounce 1s);
     // @include animation-delay(1s);
-    @include closed-text-shadow(5, $gray-darker);
     font-size: $font-size-xxxxl * 1.5;
   }
 }
