@@ -52,7 +52,7 @@ helpers do
       {
         emotion: "meh",
         label: "Meh",
-        result_title: "Noted."
+        result_title: "So close, yet so far."
       },
       { emotion: "happy",
         label: "Mmm",
