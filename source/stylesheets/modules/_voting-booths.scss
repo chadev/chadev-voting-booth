@@ -2,16 +2,26 @@
   color: $white;
 }
 
+.voting-booth-question {
+  @include transition(opacity 0.5s);
+  opacity: 0;
+  .voting-booth.is-active & {
+    opacity: 1;
+  }
+}
+
 .voting-booth-prompt {
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-size: $font-size-xxxl;
+  font-size: $font-size-xxl;
   margin-bottom: 2rem;
-  opacity: 0;
   @include closed-text-shadow(15, $blue-dark);
-  @include animation(moveInDown 0.5s $base-easing);
-  @include animation-delay(0.2s);
-  @include animation-fill-mode(forwards);
+  opacity: 0;
+  .voting-booth.is-active & {
+    @include animation(moveInDown 0.5s $base-easing);
+    @include animation-delay(0.25s);
+    @include animation-fill-mode(forwards);
+  }
   @include media($screen-sm) {
     margin-bottom: 5rem;
   }
@@ -30,10 +40,12 @@
   list-style: none;
   color: $white;
   opacity: 0;
-  @include animation(bounceIn 1s);
-  @include animation-fill-mode(forwards);
-  @include animation-delay(0.75s);
   @include span-columns(4);
+  .voting-booth.is-active & {
+    @include animation(bounceIn 0.95s);
+    @include animation-fill-mode(forwards);
+    @include animation-delay(0.8s);
+  }
 }
 
 .voting-booth-item-action {
@@ -58,4 +70,46 @@
   font-size: $font-size-xxl;
   margin-top: -1rem;
   @include closed-text-shadow(18, $blue-dark);
+}
+
+.voting-booth-result {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: $gray-darker image-url("background-patterns/science-illustration.png");
+  @include animation-fill-mode(forwards);
+  display: none;
+  &.has-voted {
+    @include animation(bounceInUp 0.75s);
+    display: block;
+  }
+  &.has-seen-results {
+    @include animation(bounceOutDown 0.65s);
+    display: block;
+  }
+}
+
+.voting-booth-result-inner {
+  position: relative;
+  top: 50%;
+  margin-top: -8rem;
+  i {
+    // @include animation(bounce 1s);
+    // @include animation-delay(1s);
+    @include closed-text-shadow(5, $gray-darker);
+    font-size: $font-size-xxxxl * 1.5;
+  }
+}
+
+.voting-booth-result-title {
+  margin-top: -1rem;
+  text-transform: uppercase;
+  line-height: 1.1em;
+  font-size: $font-size-xxxl;
+}
+
+.voting-booth-result-subtitle {
+  font-size: $font-size-lg;
 }

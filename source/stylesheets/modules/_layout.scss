@@ -1,7 +1,6 @@
 body {
   background: $blue image-url("background-patterns/science-illustration.png");
   text-align: center;
-  margin-top: 2em;
   @include transition(font-size 0.2s);
   @include media($screen-sm) {
     font-size: $font-size-lg;
@@ -18,8 +17,10 @@ body {
   margin: 3rem 0 1rem;
   text-align: center;
   opacity: 0;
-  @include animation(moveInDown 0.5s $base-easing);
-  @include animation-fill-mode(forwards);
+  .voting-booth.is-active & {
+    @include animation(moveInDown 0.5s $base-easing);
+    @include animation-fill-mode(forwards);
+  }
   @include media($screen-sm) {
     margin-top: 5rem;
   }

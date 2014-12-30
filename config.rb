@@ -44,9 +44,20 @@
 helpers do
   def voting_booth_items
     [
-      { emotion: "sad", label: "Enh" },
-      { emotion: "meh", label: "Meh" },
-      { emotion: "happy", label: "Mmm" }
+      {
+        emotion: "sad",
+        label: "Enh",
+        result_title: "Oof. We'll Do Better Next Time."
+      },
+      {
+        emotion: "meh",
+        label: "Meh",
+        result_title: "Noted."
+      },
+      { emotion: "happy",
+        label: "Mmm",
+        result_title: "Woohoo!"
+      }
     ]
   end
 end
