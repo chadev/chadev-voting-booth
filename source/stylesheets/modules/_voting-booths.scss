@@ -55,9 +55,9 @@
   i {
     font-size: $font-size-xxxxl * 3.5;
   }
-  &:active {
-    @include transition-timing-function($base-easing);
-    @include transform(scale3d(.9, .9, .9));
+  .voting-booth-item.is-active & {
+    @include transition(transform 0.05s $base-easing);
+    @include transform(scale3d(.7, .7, .7));
   }
   &:focus {
     outline: 0;
@@ -101,6 +101,7 @@
 
 .voting-booth-result-title {
   margin-top: -1rem;
+  padding: 0 1rem;
   text-transform: uppercase;
   line-height: 1.1em;
   font-size: $font-size-xxxl;
