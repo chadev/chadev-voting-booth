@@ -91,10 +91,8 @@
 .voting-booth-result-inner {
   position: relative;
   top: 50%;
-  margin-top: -8rem;
+  margin-top: -10rem;
   i {
-    // @include animation(bounce 1s);
-    // @include animation-delay(1s);
     font-size: $font-size-xxxxl * 1.5;
   }
 }
