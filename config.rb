@@ -47,7 +47,7 @@ helpers do
       {
         emotion: "sad",
         label: "Enh",
-        result_title: "Oof. We'll Do Better Next Time."
+        result_title: "We'll Do Better Next Time."
       },
       {
         emotion: "meh",
