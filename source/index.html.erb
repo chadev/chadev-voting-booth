@@ -1,0 +1,35 @@
+<div class="voting-booth">
+  <div class="voting-booth-question">
+    <div class="branding">
+      <%= image_tag "chadev-logo.svg", class: 'branding-logo', alt: 'Chadev' %>
+    </div>
+
+    <h1 class="voting-booth-prompt">How was today's lunch?</h1>
+    <ul class="voting-booth-items">
+      <% voting_booth_items.each do |vote| %>
+        <li class="voting-booth-item" data-vote="<%= vote[:emotion] %>">
+          <button class="voting-booth-item-action">
+            <i class="icon-face-<%= vote[:emotion] %>"></i>
+            <div class="voting-booth-item-description">
+              <%= vote[:label] %>&hellip;
+            </div>
+          </button>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <% voting_booth_items.each do |vote| %>
+    <div class="voting-booth-result" data-vote="<%= vote[:emotion] %>">
+      <div class="voting-booth-result-inner">
+        <i class="icon-face-<%= vote[:emotion] %>"></i>
+        <h1 class="voting-booth-result-title">
+          <%= vote[:result_title] %>
+        </h1>
+        <div class="voting-booth-result-subtitle">
+          Thanks for your feedback.
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
