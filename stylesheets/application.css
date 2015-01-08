@@ -2,8 +2,8 @@
   font-family: BrandonGrotesque;
   font-weight: bold;
   font-style: normal;
-  src: url("/fonts/brandon_blk-webfont.eot");
-  src: url("/fonts/brandon_blk-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/brandon_blk-webfont.woff") format("woff"), url("/fonts/brandon_blk-webfont.ttf") format("truetype"), url("/fonts/brandon_blk-webfont.svg#BrandonGrotesque") format("svg"); }
+  src: url("../fonts/brandon_blk-webfont.eot");
+  src: url("../fonts/brandon_blk-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/brandon_blk-webfont.woff") format("woff"), url("../fonts/brandon_blk-webfont.ttf") format("truetype"), url("../fonts/brandon_blk-webfont.svg#BrandonGrotesque") format("svg"); }
 @-webkit-keyframes moveInDown {
   0% {
     opacity: 0;
@@ -485,8 +485,8 @@ input[type="submit"] {
   font-family: "chadev-lunchables-icons";
   font-weight: normal;
   font-style: normal;
-  src: url("/fonts/chadev-lunchables-icons.eot");
-  src: url("/fonts/chadev-lunchables-icons.eot?#iefix") format("embedded-opentype"), url("/fonts/chadev-lunchables-icons.woff") format("woff"), url("/fonts/chadev-lunchables-icons.ttf") format("truetype"), url("/fonts/chadev-lunchables-icons.svg#chadev-lunchables-icons") format("svg"); }
+  src: url("../fonts/chadev-lunchables-icons.eot");
+  src: url("../fonts/chadev-lunchables-icons.eot?#iefix") format("embedded-opentype"), url("../fonts/chadev-lunchables-icons.woff") format("woff"), url("../fonts/chadev-lunchables-icons.ttf") format("truetype"), url("../fonts/chadev-lunchables-icons.svg#chadev-lunchables-icons") format("svg"); }
 /* line 3, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/base/icons/_font-icons.scss */
 [data-icon]:before, [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "chadev-lunchables-icons" !important;
