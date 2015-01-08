@@ -1,3 +1,5 @@
+* { -webkit-tap-highlight-color: rgba(0,0,0,0); }
+
 button,
 input[type="submit"] {
   @extend %button;

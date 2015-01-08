@@ -9,37 +9,57 @@ CHADEV.votingBooth = {
   init: function() {
     $('.voting-booth').addClass('is-active');
 
-    $('button.voting-booth-item-action').on('mousedown', function() {
-      var voteItem = $(this).parent()
-      var result = $('.voting-booth-result[data-vote='+ voteItem.data('vote') +']');
+    var startEventType = 'mousedown';
+    var endEventType   = 'mouseup';
 
+    if (Modernizr.touch === true) {
+      startEventType = 'touchstart';
+      endEventType   = 'touchend';
+    }
+
+    $('button.voting-booth-item-action').on(startEventType, function() {
+      $(this).parent().addClass('has-mousedown');
+    });
+
+    $(document).on(endEventType, function() {
+      $('.voting-booth-item').removeClass('has-mousedown');
+    });
+
+    $('button.voting-booth-item-action').on(endEventType, function() {
+      var voteItem = $(this).parent()
       var votesRef = myFirebaseRef.child("votes");
       var voteRef = votesRef.push({
         vote_lunch: {
           ended_at: Firebase.ServerValue.TIMESTAMP,
           vote: voteItem.data('vote')
         }
-      });
+      }, function(error) {
+        if(error) {
+          alert("Data could not be saved :( Jordan has failed you.")
+        } else {
+          var result = $('.voting-booth-result[data-vote='+ voteItem.data('vote') +']');
 
-      voteItem.addClass('is-active').bind(animationEnd, function(){
-        result.addClass('has-voted');
-        $('.voting-booth').removeClass('is-active');
-        voteItem.unbind(animationEnd);
-        setTimeout(function() {
-          result
-            .removeClass('has-voted')
-            .addClass('has-seen-results')
-            .unbind();
-          voteItem
-            .removeClass('is-active');
-
-          result.bind(animationEnd, function(){
-            result
-              .removeClass('has-seen-results')
+          voteItem.addClass('is-active').bind(transitionEnd, function(){
+            result.addClass('has-voted');
+            $('.voting-booth').removeClass('is-active');
+            voteItem.unbind(transitionEnd);
+            setTimeout(function() {
+              result
+              .removeClass('has-voted')
+              .addClass('has-seen-results')
               .unbind();
-            $('.voting-booth').addClass('is-active');
+              voteItem
+              .removeClass('is-active');
+
+              result.bind(animationEnd, function(){
+                result
+                .removeClass('has-seen-results')
+                .unbind();
+                $('.voting-booth').addClass('is-active');
+              });
+            }, 1000)
           });
-        }, 1000)
+        }
       });
     });
   }
