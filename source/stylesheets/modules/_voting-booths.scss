@@ -21,8 +21,10 @@
     @include animation-delay(0.25s);
     @include animation-fill-mode(forwards);
   }
-  @include media($screen-sm) {
-    margin-bottom: 5rem;
+  @include media(orientation portrait) {
+    font-size: $font-size-xxxxl * 1.2;
+    line-height: 1.2;
+    margin-bottom: 3rem;
   }
 }
 
@@ -54,7 +56,10 @@
   @include user-select(none);
   opacity: 1;
   i {
-    font-size: $font-size-xxxxl * 3.5;
+    font-size: $font-size-xxxxl * 3;
+    @include media(orientation portrait) {
+      font-size: $font-size-xxxxl * 2.5;
+    }
   }
   .voting-booth-item.has-mousedown & {
     @include transition(transform 0.1s $base-easing);
