@@ -21,9 +21,6 @@ body {
     @include animation(moveInDown 0.5s $base-easing);
     @include animation-fill-mode(forwards);
   }
-  @include media(orientation portrait) {
-    margin-top: 5rem;
-  }
 }
 
 .branding-logo {

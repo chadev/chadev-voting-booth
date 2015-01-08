@@ -61,11 +61,11 @@
     }
   }
   .voting-booth-item.has-mousedown & {
-    @include transition(transform 0.1s $base-easing);
+    @include transition(transform 0.05s $base-easing);
     @include transform(scale3d(0.9,0.9,0.9));
   }
   .voting-booth-item.is-active & {
-    @include transition(transform 0.1s $base-easing, opacity 0.1s $base-easing);
+    @include transition(transform 0.05s $base-easing, opacity 0.1s $base-easing);
     @include transform(scale3d(1.3, 1.3, 1.3));
     opacity: 0.25;
   }
