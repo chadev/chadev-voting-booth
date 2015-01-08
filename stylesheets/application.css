@@ -517,7 +517,7 @@ input[type="submit"] {
 
 /* line 1, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_layout.scss */
 body {
-  background: #15A8DB url("/images/background-patterns/science-illustration.png");
+  background: #15A8DB url("../images/background-patterns/science-illustration.png");
   text-align: center;
   -webkit-transition: font-size 0.2s;
   -moz-transition: font-size 0.2s;
@@ -693,7 +693,7 @@ body {
   height: 100%;
   left: 0;
   top: 0;
-  background: #363637 url("/images/background-patterns/science-illustration.png");
+  background: #363637 url("../images/background-patterns/science-illustration.png");
   -webkit-animation-fill-mode: forwards;
   -moz-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
