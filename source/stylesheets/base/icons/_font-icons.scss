@@ -1,4 +1,4 @@
-@include font-face("chadev-lunchables-icons", '/fonts/chadev-lunchables-icons');
+@include font-face("chadev-lunchables-icons", '../fonts/chadev-lunchables-icons');
 
 %font-icon {
   font-family: "chadev-lunchables-icons" !important;
