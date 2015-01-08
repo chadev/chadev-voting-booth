@@ -56,8 +56,7 @@
     font-size: $font-size-xxxxl * 3.5;
   }
   .voting-booth-item.is-active & {
-    @include transition(transform 0.05s $base-easing);
-    @include transform(scale3d(.7, .7, .7));
+    @include animation(vote 0.2s $base-easing);
   }
   &:focus {
     outline: 0;

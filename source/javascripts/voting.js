@@ -21,10 +21,10 @@ CHADEV.votingBooth = {
         }
       });
 
-      voteItem.addClass('is-active').bind(transitionEnd, function(){
+      voteItem.addClass('is-active').bind(animationEnd, function(){
         result.addClass('has-voted');
         $('.voting-booth').removeClass('is-active');
-
+        voteItem.unbind(animationEnd);
         setTimeout(function() {
           result
             .removeClass('has-voted')
