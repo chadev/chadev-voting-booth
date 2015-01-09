@@ -108,7 +108,7 @@
   background: $gray-darker image-url("background-patterns/science-illustration.png");
   height: 100%;
   @include animation-fill-mode(forwards);
-  padding-bottom: 5em;
+  padding-bottom: 3rem;
   display: none;
 
   &.has-voted {
