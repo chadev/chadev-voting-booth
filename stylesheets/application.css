@@ -720,7 +720,7 @@ body {
   -webkit-animation-fill-mode: forwards;
   -moz-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-  padding-bottom: 5em;
+  padding-bottom: 3rem;
   display: none; }
   /* line 114, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
   .voting-booth-result.has-voted {
