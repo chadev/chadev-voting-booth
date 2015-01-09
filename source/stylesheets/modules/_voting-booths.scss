@@ -28,7 +28,7 @@
   letter-spacing: 0.1em;
   font-size: $font-size-xxl;
   line-height: 1.1;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   opacity: 0;
   .voting-booth.is-active & {
     @include animation(moveInDown 0.5s $base-easing);
@@ -36,6 +36,7 @@
     @include animation-fill-mode(forwards);
   }
   @include media(orientation portrait) {
+    margin-bottom: 3rem;
     font-size: $font-size-xxxxl * 1.2;
   }
 }
