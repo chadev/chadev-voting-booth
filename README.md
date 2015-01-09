@@ -3,10 +3,24 @@ Chadev Voting Booth
 
 Simple voting app for measuring lunch quality and attendance during Chadev lunches.
 
+[![screenshot](http://dl.dropbox.com/u/7502853/Screenshots/ywtsjqi3n9~w.png)](http://chadev.github.io/chadev-voting-booth/)
+
+
+### Setup
+
 Application is built on top of [Middleman](http://middlemanapp.com) and uses [Bourbon](http://bourbon.io/), [Neat](http://neat.bourbon.io/), and [Bitters](http://bitters.bourbon.io/) for lightweight [Sass](http://sass-lang.com) mixins.
 
+[ more later... ]
 
-#### Credits
+
+### Deploy
+
+This app uses 'middleman-gh-pages' gem which adds a rake file to deploy the Middleman build static files to gh-pages branch. Run `rake publish` from console to publish to: http://chadev.github.io/chadev-voting-booth/
+
+
+### Credits
+
+Created by: [Jordan Isip](http://jordanisip.com) ([@fixie](http://twitter.com/fixie))
 
 Original background illustration courtesy of: [Fabricio Rosa Marques](http://fabric8.de/) via [The Pattern Library](http://thepatternlibrary.com/#science)
 
