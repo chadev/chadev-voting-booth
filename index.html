@@ -17,73 +17,78 @@
 
   <body>
     <div class="voting-booth">
-  <div class="voting-booth-question">
-    <div class="branding">
-      <img class="branding-logo" alt="Chadev" src="images/chadev-logo.svg" />
+  <div class="voting-booth-question-container voting-booth-align-middle-container">
+    <div class="voting-booth-question voting-booth-align-middle">
+      <div class="branding">
+        <img class="branding-logo" alt="Chadev" src="images/chadev-logo.svg" />
+      </div>
+      <h1 class="voting-booth-prompt">How was today's lunch?</h1>
+      <ul class="voting-booth-items">
+          <li class="voting-booth-item" data-vote="dislike">
+            <button class="voting-booth-item-action">
+              <i class="icon-face-dislike"></i>
+              <div class="voting-booth-item-description">
+                Enh&hellip;
+              </div>
+            </button>
+          </li>
+          <li class="voting-booth-item" data-vote="neutral">
+            <button class="voting-booth-item-action">
+              <i class="icon-face-neutral"></i>
+              <div class="voting-booth-item-description">
+                Meh&hellip;
+              </div>
+            </button>
+          </li>
+          <li class="voting-booth-item" data-vote="like">
+            <button class="voting-booth-item-action">
+              <i class="icon-face-like"></i>
+              <div class="voting-booth-item-description">
+                Mmm&hellip;
+              </div>
+            </button>
+          </li>
+      </ul>
     </div>
-
-    <h1 class="voting-booth-prompt">How was today's lunch?</h1>
-    <ul class="voting-booth-items">
-        <li class="voting-booth-item" data-vote="dislike">
-          <button class="voting-booth-item-action">
-            <i class="icon-face-dislike"></i>
-            <div class="voting-booth-item-description">
-              Enh&hellip;
-            </div>
-          </button>
-        </li>
-        <li class="voting-booth-item" data-vote="neutral">
-          <button class="voting-booth-item-action">
-            <i class="icon-face-neutral"></i>
-            <div class="voting-booth-item-description">
-              Meh&hellip;
-            </div>
-          </button>
-        </li>
-        <li class="voting-booth-item" data-vote="like">
-          <button class="voting-booth-item-action">
-            <i class="icon-face-like"></i>
-            <div class="voting-booth-item-description">
-              Mmm&hellip;
-            </div>
-          </button>
-        </li>
-    </ul>
   </div>
+  <div class="voting-booth-results-container voting-booth-align-middle-container">
+    <div class="voting-booth-results voting-booth-align-middle">
+        <div class="voting-booth-result" data-vote="dislike">
+          <div class="voting-booth-result-inner">
+            <i class="icon-face-dislike"></i>
+            <h1 class="voting-booth-result-title">
+              We'll Do Better Next Time.
+            </h1>
+            <div class="voting-booth-result-subtitle">
+              Thanks for your feedback.
+            </div>
+          </div>
+        </div>
+        <div class="voting-booth-result" data-vote="neutral">
+          <div class="voting-booth-result-inner">
+            <i class="icon-face-neutral"></i>
+            <h1 class="voting-booth-result-title">
+              So close, yet so far.
+            </h1>
+            <div class="voting-booth-result-subtitle">
+              Thanks for your feedback.
+            </div>
+          </div>
+        </div>
+        <div class="voting-booth-result" data-vote="like">
+          <div class="voting-booth-result-inner">
+            <i class="icon-face-like"></i>
+            <h1 class="voting-booth-result-title">
+              Woohoo!
+            </h1>
+            <div class="voting-booth-result-subtitle">
+              Thanks for your feedback.
+            </div>
+          </div>
+        </div>
 
-    <div class="voting-booth-result" data-vote="dislike">
-      <div class="voting-booth-result-inner">
-        <i class="icon-face-dislike"></i>
-        <h1 class="voting-booth-result-title">
-          We'll Do Better Next Time.
-        </h1>
-        <div class="voting-booth-result-subtitle">
-          Thanks for your feedback.
-        </div>
-      </div>
     </div>
-    <div class="voting-booth-result" data-vote="neutral">
-      <div class="voting-booth-result-inner">
-        <i class="icon-face-neutral"></i>
-        <h1 class="voting-booth-result-title">
-          So close, yet so far.
-        </h1>
-        <div class="voting-booth-result-subtitle">
-          Thanks for your feedback.
-        </div>
-      </div>
-    </div>
-    <div class="voting-booth-result" data-vote="like">
-      <div class="voting-booth-result-inner">
-        <i class="icon-face-like"></i>
-        <h1 class="voting-booth-result-title">
-          Woohoo!
-        </h1>
-        <div class="voting-booth-result-subtitle">
-          Thanks for your feedback.
-        </div>
-      </div>
-    </div>
+  </div>
 </div>
 
   </body>
