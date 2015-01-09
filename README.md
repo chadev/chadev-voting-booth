@@ -3,10 +3,14 @@ Chadev Voting Booth
 
 Simple voting app for measuring lunch quality and attendance during Chadev lunches.
 
-Application is built on top of [Middleman](http://middlemanapp.com) and uses [Bourbon](http://bourbon.io/), [Neat](http://neat.bourbon.io/), and [Bitters](http://bitters.bourbon.io/) for lightweight [Sass](http://sass-lang.com) mixins.
+[![screenshot](http://dl.dropbox.com/u/7502853/Screenshots/ywtsjqi3n9~w.png)](http://chadev.github.io/chadev-voting-booth/)
+
 
 ### Setup
-[ to do ]
+
+Application is built on top of [Middleman](http://middlemanapp.com) and uses [Bourbon](http://bourbon.io/), [Neat](http://neat.bourbon.io/), and [Bitters](http://bitters.bourbon.io/) for lightweight [Sass](http://sass-lang.com) mixins.
+
+[ more later... ]
 
 
 ### Deploy
