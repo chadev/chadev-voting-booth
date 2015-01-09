@@ -1,3 +1,9 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 body {
   background: $blue image-url("background-patterns/science-illustration.png");
   text-align: center;
@@ -14,7 +20,7 @@ body {
 }
 
 .branding {
-  margin: 2rem 0 1rem;
+  margin: 0 0 1rem;
   text-align: center;
   opacity: 0;
   .voting-booth.is-active & {

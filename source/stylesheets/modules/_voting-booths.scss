@@ -1,5 +1,18 @@
 .voting-booth {
   color: $white;
+  width: 100%;
+  height: 100%;
+}
+
+.voting-booth-align-middle-container {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.voting-booth-align-middle {
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .voting-booth-question {
@@ -79,18 +92,26 @@
   margin-top: -1rem;
 }
 
-.voting-booth-result {
+.voting-booth-results-container, .voting-booth-result {
   position: fixed;
-  width: 100%;
   height: 100%;
-  left: 0;
+  width: 100%;
   top: 0;
+  .voting-booth.is-active & {
+    display: none;
+  }
+}
+
+.voting-booth-result {
   background: $gray-darker image-url("background-patterns/science-illustration.png");
+  height: 125%;
   @include animation-fill-mode(forwards);
   display: none;
+
   &.has-voted {
     @include animation(bounceInUp 0.75s);
     display: block;
+
   }
   &.has-seen-results {
     @include animation(bounceOutDown 0.65s);
