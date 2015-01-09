@@ -92,11 +92,12 @@
   margin-top: -1rem;
 }
 
-.voting-booth-results-container, .voting-booth-result {
+.voting-booth-results-container {
   position: fixed;
   height: 100%;
   width: 100%;
   top: 0;
+  display: table;
   .voting-booth.is-active & {
     display: none;
   }
@@ -106,23 +107,18 @@
   background: $gray-darker image-url("background-patterns/science-illustration.png");
   height: 125%;
   @include animation-fill-mode(forwards);
+  padding-bottom: 2em;
   display: none;
 
   &.has-voted {
     @include animation(bounceInUp 0.75s);
-    display: block;
+    display: table-cell;
 
   }
   &.has-seen-results {
     @include animation(bounceOutDown 0.65s);
-    display: block;
+    display: table-cell;
   }
-}
-
-.voting-booth-result-inner {
-  position: relative;
-  top: 50%;
-  margin-top: -9rem;
   i {
     font-size: $font-size-xxxxl * 1.5;
   }

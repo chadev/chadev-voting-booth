@@ -19,18 +19,16 @@
       </ul>
     </div>
   </div>
-  <div class="voting-booth-results-container voting-booth-align-middle-container">
-    <div class="voting-booth-results voting-booth-align-middle">
+  <div class="voting-booth-results-container">
+    <div class="voting-booth-results voting-booth-align-middle-container">
       <% voting_booth_items.each do |vote| %>
-        <div class="voting-booth-result" data-vote="<%= vote[:emotion] %>">
-          <div class="voting-booth-result-inner">
-            <i class="icon-face-<%= vote[:emotion] %>"></i>
-            <h1 class="voting-booth-result-title">
-              <%= vote[:result_title] %>
-            </h1>
-            <div class="voting-booth-result-subtitle">
-              Thanks for your feedback.
-            </div>
+        <div class="voting-booth-result voting-booth-align-middle" data-vote="<%= vote[:emotion] %>">
+          <i class="icon-face-<%= vote[:emotion] %>"></i>
+          <h1 class="voting-booth-result-title">
+            <%= vote[:result_title] %>
+          </h1>
+          <div class="voting-booth-result-subtitle">
+            Thanks for your feedback.
           </div>
         </div>
       <% end %>
