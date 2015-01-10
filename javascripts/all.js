@@ -77,7 +77,9 @@ CHADEV.votingBooth = {
 }
 
 $(function() {
-  CHADEV.votingBooth.init();
-
   FastClick.attach(document.body);
+});
+
+$(window).load(function() {
+  CHADEV.votingBooth.init();
 });
