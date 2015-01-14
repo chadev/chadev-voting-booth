@@ -31,6 +31,8 @@ CHADEV.votingBooth = {
     });
 
     $('button.voting-booth-item-action').on(endEventType, function() {
+      $('button.voting-booth-item-action').prop("disabled", true);
+
       var voteItem = $(this).parent()
 
       var voteRef = votesRef.push({
@@ -64,6 +66,8 @@ CHADEV.votingBooth = {
               });
             }, 1000)
           });
+
+          $('button.voting-booth-item-action').prop("disabled", false);
         }
       });
     });
