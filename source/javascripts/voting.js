@@ -7,6 +7,9 @@ var CHADEV = CHADEV || {};
 
 CHADEV.votingBooth = {
   init: function() {
+    // Forcing to go online - sometimes app gets disconnected
+    Firebase.goOnline();
+
     var votesRef = myFirebaseRef.child("votes");
 
     $('.voting-booth').addClass('is-active');
