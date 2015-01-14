@@ -7,6 +7,8 @@ var CHADEV = CHADEV || {};
 
 CHADEV.votingBooth = {
   init: function() {
+    var votesRef = myFirebaseRef.child("votes");
+
     $('.voting-booth').addClass('is-active');
 
     var startEventType = 'mousedown';
@@ -27,7 +29,7 @@ CHADEV.votingBooth = {
 
     $('button.voting-booth-item-action').on(endEventType, function() {
       var voteItem = $(this).parent()
-      var votesRef = myFirebaseRef.child("votes");
+
       var voteRef = votesRef.push({
         vote_lunch: {
           ended_at: Firebase.ServerValue.TIMESTAMP,
@@ -62,6 +64,45 @@ CHADEV.votingBooth = {
         }
       });
     });
+
+    votesRef.on("value", function(snapshot) {
+      var totalVotes = snapshot.numChildren();
+      var dislikeVotes = 0;
+      var neutralVotes = 0;
+      var likeVotes = 0;
+
+      snapshot.forEach(function(voteSnapshot) {
+        switch(voteSnapshot.child('vote_lunch/vote').val()) {
+          case "dislike":
+            dislikeVotes += 1;
+            break;
+          case "neutral":
+            neutralVotes += 1;
+          case "like":
+            likeVotes += 1;
+        }
+      });
+
+      $('.bar-chart-item.is-dislike')
+          .find('.bar-chart-item-count').text(dislikeVotes).end()
+          .find('.bar-chart-item-bar').css('height', CHADEV.votingBooth.votePercentage(dislikeVotes, totalVotes));
+
+        $('.bar-chart-item.is-neutral')
+          .find('.bar-chart-item-count').text(neutralVotes).end()
+          .find('.bar-chart-item-bar').css('height', CHADEV.votingBooth.votePercentage(neutralVotes, totalVotes));
+
+        $('.bar-chart-item.is-like')
+          .find('.bar-chart-item-count').text(likeVotes).end()
+          .find('.bar-chart-item-bar').css('height', CHADEV.votingBooth.votePercentage(likeVotes, totalVotes));
+
+
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
+  },
+  votePercentage: function(itemVotes, totalVotes) {
+    var percentage = (itemVotes / totalVotes) * 100
+    return percentage + "%" ;
   }
 }
 

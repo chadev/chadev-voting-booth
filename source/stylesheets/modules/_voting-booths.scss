@@ -101,7 +101,7 @@
   top: 0;
   display: table;
   .voting-booth.is-active & {
-    //display: none;
+    display: none;
   }
 }
 
@@ -138,6 +138,7 @@
 }
 
 .voting-booth-results {
+  display: none;
   position: fixed;
   top: 0;
   width: 100%;
@@ -157,7 +158,7 @@
 .voting-booth-byline {
   font-weight: normal;
   color: rgba($white,0.5);
-  font-size: $font-size-xs;
+  font-size: $font-size-sm;
   a {
     color: rgba($white,0.5);
     text-decoration: underline;

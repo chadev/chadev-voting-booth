@@ -18,13 +18,21 @@
 }
 
 .bar-chart-item-count {
-  margin-top: 1rem;
+  opacity: 0;
+  margin-top: -2.5rem;
+  @include animation(bounceIn 1s);
+  @include animation-delay(1s);
+  @include animation-fill-mode(forwards);
+  @include media($screen-md) {
+    margin-top: -3.2rem;
+  }
 }
 
 .bar-chart-item-bar {
-  @include transition(height 0.2s $base-easing);
+  @include transition(height 0.5s $base-easing);
   background: rgba($white, 0.6);
   border-radius: 5px;
+  height: 0;
 }
 
 .bar-chart-item-label {

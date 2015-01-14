@@ -21,37 +21,35 @@
   </div>
   <div class="voting-booth-results-container">
     <div class="voting-booth-align-middle-container">
-      <div class="voting-booth-align-middle">
-        <% voting_booth_items.each do |vote| %>
-          <div class="voting-booth-thanks-prompt" data-vote="<%= vote[:emotion] %>">
-            <i class="icon-face-<%= vote[:emotion] %>"></i>
-            <h1 class="voting-booth-thanks-prompt-title">
-              <%= vote[:result_title] %>
-            </h1>
-            <div class="voting-booth-thanks-prompt-subtitle">
-              Thanks for your feedback.
-            </div>
+      <% voting_booth_items.each do |vote| %>
+        <div class="voting-booth-thanks-prompt voting-booth-align-middle" data-vote="<%= vote[:emotion] %>">
+          <i class="icon-face-<%= vote[:emotion] %>"></i>
+          <h1 class="voting-booth-thanks-prompt-title">
+            <%= vote[:result_title] %>
+          </h1>
+          <div class="voting-booth-thanks-prompt-subtitle">
+            Thanks for your feedback.
           </div>
-        <% end %>
-        <div class="voting-booth-results">
-          <ul class="bar-chart">
-            <% voting_booth_items.each do |vote| %>
-              <li class="bar-chart-item is-<%= vote[:emotion] %>">
-                <div class="bar-chart-item-bar" style="height: 90%;">
-                  <div class="bar-chart-item-count">16</div>
-                </div>
-                <i class="bar-chart-item-label icon-face-<%= vote[:emotion] %>"></i>
-              </li>
-            <% end %>
-          </ul>
+        </div>
+      <% end %>
+      <div class="voting-booth-results">
+        <ul class="bar-chart">
+          <% voting_booth_items.each do |vote| %>
+            <li class="bar-chart-item is-<%= vote[:emotion] %>">
+              <div class="bar-chart-item-bar"">
+                <div class="bar-chart-item-count">16</div>
+              </div>
+              <i class="bar-chart-item-label icon-face-<%= vote[:emotion] %>"></i>
+            </li>
+          <% end %>
+        </ul>
 
-          <div class="voting-booth-results-footer">
-            <h5>Live results! See you next time!</h5>
-            <p class="voting-booth-byline">
-              Created by <a href="http://twitter.com/fixie">@fixie</a> &bull;
-              <a href="http://github.com/chadev/chadev-voting-booth">View on GitHub</a>
-            </p>
-          </div>
+        <div class="voting-booth-results-footer">
+          <h5>Live results! See you next time!</h5>
+          <p class="voting-booth-byline">
+            Created by <a href="http://twitter.com/fixie">@fixie</a> &bull;
+            <a href="http://github.com/chadev/chadev-voting-booth">View on GitHub</a>
+          </p>
         </div>
       </div>
     </div>
