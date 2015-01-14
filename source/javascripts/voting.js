@@ -37,7 +37,7 @@ CHADEV.votingBooth = {
         if(error) {
           alert("Data could not be saved :( Jordan has failed you.")
         } else {
-          var result = $('.voting-booth-result[data-vote='+ voteItem.data('vote') +']');
+          var result = $('.voting-booth-thanks-prompt[data-vote='+ voteItem.data('vote') +']');
 
           voteItem.addClass('is-active').bind(transitionEnd, function(){
             result.addClass('has-voted');

@@ -1,0 +1,35 @@
+.bar-chart {
+  height: 100%;
+  margin: 0;
+  padding: 1rem 2rem;
+}
+
+.bar-chart-item {
+  @include span-columns(4);
+  height: 100%;
+  position: relative;
+}
+
+.bar-chart-item-label, .bar-chart-item-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.bar-chart-item-count {
+  margin-top: 1rem;
+}
+
+.bar-chart-item-bar {
+  @include transition(height 0.2s $base-easing);
+  background: rgba($white, 0.6);
+  border-radius: 5px;
+}
+
+.bar-chart-item-label {
+  font-size: $font-size-xxxxl * 2;
+  bottom: 0;
+  line-height: 0;
+  z-index: 5000;
+}

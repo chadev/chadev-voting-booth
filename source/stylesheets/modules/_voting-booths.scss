@@ -94,18 +94,18 @@
 }
 
 .voting-booth-results-container {
+  background: $gray-darker image-url("background-patterns/science-illustration.png");
   position: fixed;
   height: 110%;
   width: 100%;
   top: 0;
   display: table;
   .voting-booth.is-active & {
-    display: none;
+    //display: none;
   }
 }
 
-.voting-booth-result {
-  background: $gray-darker image-url("background-patterns/science-illustration.png");
+.voting-booth-thanks-prompt {
   height: 100%;
   @include animation-fill-mode(forwards);
   padding-bottom: 3rem;
@@ -125,7 +125,7 @@
   }
 }
 
-.voting-booth-result-title {
+.voting-booth-thanks-prompt-title {
   margin-top: -1rem;
   padding: 0 1rem;
   text-transform: uppercase;
@@ -133,6 +133,33 @@
   font-size: $font-size-xxxl;
 }
 
-.voting-booth-result-subtitle {
+.voting-booth-thanks-prompt-subtitle {
   font-size: $font-size-lg;
+}
+
+.voting-booth-results {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 7rem;
+}
+
+.voting-booth-results-footer {
+  width: 100%;
+  height: 7rem;
+  padding-top: 1rem;
+  p {
+    margin: 0;
+  }
+}
+
+.voting-booth-byline {
+  font-weight: normal;
+  color: rgba($white,0.5);
+  font-size: $font-size-xs;
+  a {
+    color: rgba($white,0.5);
+    text-decoration: underline;
+  }
 }
