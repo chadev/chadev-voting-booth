@@ -78,32 +78,34 @@ CHADEV.votingBooth = {
             break;
           case "neutral":
             neutralVotes += 1;
+            break;
           case "like":
             likeVotes += 1;
+            break;
         }
       });
 
-      $('.bar-chart-item.is-dislike')
-          .find('.bar-chart-item-count').text(dislikeVotes).end()
-          .find('.bar-chart-item-bar').css('height', CHADEV.votingBooth.votePercentage(dislikeVotes, totalVotes));
-
-        $('.bar-chart-item.is-neutral')
-          .find('.bar-chart-item-count').text(neutralVotes).end()
-          .find('.bar-chart-item-bar').css('height', CHADEV.votingBooth.votePercentage(neutralVotes, totalVotes));
-
-        $('.bar-chart-item.is-like')
-          .find('.bar-chart-item-count').text(likeVotes).end()
-          .find('.bar-chart-item-bar').css('height', CHADEV.votingBooth.votePercentage(likeVotes, totalVotes));
-
+      CHADEV.votingBooth.vote($('.bar-chart-item.is-dislike'), dislikeVotes, totalVotes);
+      CHADEV.votingBooth.vote($('.bar-chart-item.is-neutral'), neutralVotes, totalVotes);
+      CHADEV.votingBooth.vote($('.bar-chart-item.is-like'), likeVotes, totalVotes);
 
     }, function (errorObject) {
       console.log("The read failed: " + errorObject.code);
     });
   },
-  votePercentage: function(itemVotes, totalVotes) {
-    var percentage = (itemVotes / totalVotes) * 100
-    return percentage + "%" ;
-  }
+
+  vote: function(barChartItem, itemVotes, totalVotes) {
+    var percentage = (itemVotes / totalVotes) * 100;
+
+    barChartItem
+      .find('.bar-chart-item-count').text(itemVotes).end()
+      .find('.bar-chart-item-bar').css('height', percentage + "%");
+
+    barChartItem.addClass('has-new-vote');
+    setTimeout(function() {
+      barChartItem.removeClass('has-new-vote');
+    }, 500);
+  },
 }
 
 $(function() {
