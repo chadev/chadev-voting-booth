@@ -52,35 +52,64 @@
     </div>
   </div>
   <div class="voting-booth-results-container">
-    <div class="voting-booth-results voting-booth-align-middle-container">
-        <div class="voting-booth-result voting-booth-align-middle" data-vote="dislike">
+    <div class="voting-booth-align-middle-container">
+        <div class="voting-booth-thanks-prompt voting-booth-align-middle" data-vote="dislike">
           <i class="icon-face-dislike"></i>
-          <h1 class="voting-booth-result-title">
+          <h1 class="voting-booth-thanks-prompt-title">
             We'll Do Better Next Time.
           </h1>
-          <div class="voting-booth-result-subtitle">
+          <div class="voting-booth-thanks-prompt-subtitle">
             Thanks for your feedback.
           </div>
         </div>
-        <div class="voting-booth-result voting-booth-align-middle" data-vote="neutral">
+        <div class="voting-booth-thanks-prompt voting-booth-align-middle" data-vote="neutral">
           <i class="icon-face-neutral"></i>
-          <h1 class="voting-booth-result-title">
+          <h1 class="voting-booth-thanks-prompt-title">
             So close, yet so far.
           </h1>
-          <div class="voting-booth-result-subtitle">
+          <div class="voting-booth-thanks-prompt-subtitle">
             Thanks for your feedback.
           </div>
         </div>
-        <div class="voting-booth-result voting-booth-align-middle" data-vote="like">
+        <div class="voting-booth-thanks-prompt voting-booth-align-middle" data-vote="like">
           <i class="icon-face-like"></i>
-          <h1 class="voting-booth-result-title">
+          <h1 class="voting-booth-thanks-prompt-title">
             Woohoo!
           </h1>
-          <div class="voting-booth-result-subtitle">
+          <div class="voting-booth-thanks-prompt-subtitle">
             Thanks for your feedback.
           </div>
         </div>
+      <div class="voting-booth-results">
+        <ul class="bar-chart">
+            <li class="bar-chart-item is-dislike">
+              <div class="bar-chart-item-bar"">
+                <div class="bar-chart-item-count">16</div>
+              </div>
+              <i class="bar-chart-item-label icon-face-dislike"></i>
+            </li>
+            <li class="bar-chart-item is-neutral">
+              <div class="bar-chart-item-bar"">
+                <div class="bar-chart-item-count">16</div>
+              </div>
+              <i class="bar-chart-item-label icon-face-neutral"></i>
+            </li>
+            <li class="bar-chart-item is-like">
+              <div class="bar-chart-item-bar"">
+                <div class="bar-chart-item-count">16</div>
+              </div>
+              <i class="bar-chart-item-label icon-face-like"></i>
+            </li>
+        </ul>
 
+        <div class="voting-booth-results-footer">
+          <h5>Live results! See you next time!</h5>
+          <p class="voting-booth-byline">
+            Created by <a href="http://twitter.com/fixie">@fixie</a> &bull;
+            <a href="http://github.com/chadev/chadev-voting-booth">View on GitHub</a>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

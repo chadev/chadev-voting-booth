@@ -18,6 +18,11 @@ var CHADEV = CHADEV || {};
 
 CHADEV.votingBooth = {
   init: function() {
+    // Forcing to go online - sometimes app gets disconnected
+    Firebase.goOnline();
+
+    var votesRef = myFirebaseRef.child("votes");
+
     $('.voting-booth').addClass('is-active');
 
     var startEventType = 'mousedown';
@@ -38,7 +43,7 @@ CHADEV.votingBooth = {
 
     $('button.voting-booth-item-action').on(endEventType, function() {
       var voteItem = $(this).parent()
-      var votesRef = myFirebaseRef.child("votes");
+
       var voteRef = votesRef.push({
         vote_lunch: {
           ended_at: Firebase.ServerValue.TIMESTAMP,
@@ -48,7 +53,7 @@ CHADEV.votingBooth = {
         if(error) {
           alert("Data could not be saved :( Jordan has failed you.")
         } else {
-          var result = $('.voting-booth-result[data-vote='+ voteItem.data('vote') +']');
+          var result = $('.voting-booth-thanks-prompt[data-vote='+ voteItem.data('vote') +']');
 
           voteItem.addClass('is-active').bind(transitionEnd, function(){
             result.addClass('has-voted');
@@ -73,7 +78,48 @@ CHADEV.votingBooth = {
         }
       });
     });
-  }
+
+    votesRef.on("value", function(snapshot) {
+      var totalVotes = snapshot.numChildren();
+      var dislikeVotes = 0;
+      var neutralVotes = 0;
+      var likeVotes = 0;
+
+      snapshot.forEach(function(voteSnapshot) {
+        switch(voteSnapshot.child('vote_lunch/vote').val()) {
+          case "dislike":
+            dislikeVotes += 1;
+            break;
+          case "neutral":
+            neutralVotes += 1;
+            break;
+          case "like":
+            likeVotes += 1;
+            break;
+        }
+      });
+
+      CHADEV.votingBooth.vote($('.bar-chart-item.is-dislike'), dislikeVotes, totalVotes);
+      CHADEV.votingBooth.vote($('.bar-chart-item.is-neutral'), neutralVotes, totalVotes);
+      CHADEV.votingBooth.vote($('.bar-chart-item.is-like'), likeVotes, totalVotes);
+
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
+  },
+
+  vote: function(barChartItem, itemVotes, totalVotes) {
+    var percentage = (itemVotes / totalVotes) * 100;
+
+    barChartItem
+      .find('.bar-chart-item-count').text(itemVotes).end()
+      .find('.bar-chart-item-bar').css('height', percentage + "%");
+
+    barChartItem.addClass('has-new-vote');
+    setTimeout(function() {
+      barChartItem.removeClass('has-new-vote');
+    }, 500);
+  },
 }
 
 $(function() {
