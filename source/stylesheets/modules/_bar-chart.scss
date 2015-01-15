@@ -35,7 +35,7 @@
 }
 
 .bar-chart-item-bar {
-  @include transition(all 0.5s $base-easing);
+  @include transition(all 0.3s $base-easing);
   background: rgba($white, 0.4);
   border-radius: 5px;
   height: 0;
