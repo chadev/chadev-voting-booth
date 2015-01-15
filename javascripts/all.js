@@ -75,15 +75,17 @@ CHADEV.votingBooth = {
               thanksPrompt.bind(animationEnd, function() {
                 thanksPrompt
                   .removeClass('is-active')
-                  .unbind();
+                  .unbind(animationEnd);
                 voteItem
-                  .removeClass('has-mouseup has-mousedown');
+                  .removeClass('has-mouseup has-mousedown')
+                  .unbind(transitionEnd);
 
                 CHADEV.votingBooth.changeState('results');
 
                 $('.bar-chart').bind(animationEnd, function() {
                   setTimeout(function() {
                     CHADEV.votingBooth.populateResults();
+                    $('.bar-chart').unbind(animationEnd);
                   }, 100);
                 });
               });
@@ -121,9 +123,16 @@ CHADEV.votingBooth = {
         }
       });
 
+      console.log('Populating results');
+
       CHADEV.votingBooth.vote($('.bar-chart-item.is-dislike'), dislikeVotes, totalVotes);
       CHADEV.votingBooth.vote($('.bar-chart-item.is-neutral'), neutralVotes, totalVotes);
       CHADEV.votingBooth.vote($('.bar-chart-item.is-like'), likeVotes, totalVotes);
+
+      $('.bar-chart-item').bind(transitionEnd, function(){
+        CHADEV.votingBooth.changeState('seen-results');
+        $('.bar-chart-item').unbind(transitionEnd);
+      });
 
     }, function (errorObject) {
       console.log("The read failed: " + errorObject.code);
@@ -137,10 +146,13 @@ CHADEV.votingBooth = {
       .find('.bar-chart-item-count').text(itemVotes).end()
       .find('.bar-chart-item-bar').css('height', percentage + "%");
 
-    barChartItem.addClass('has-new-vote');
-    setTimeout(function() {
-      barChartItem.removeClass('has-new-vote');
-    }, 500);
+    if($('.voting-booth').hasClass('has-seen-results')) {
+      console.log('Voting')
+      barChartItem.addClass('has-new-vote');
+      setTimeout(function() {
+        barChartItem.removeClass('has-new-vote');
+      }, 1000);
+    }
   },
 
   changeState: function(state) {
@@ -161,6 +173,9 @@ CHADEV.votingBooth = {
         break;
       case "results":
         $('.voting-booth').addClass('is-viewing-results');
+        break;
+      case "seen-results":
+        $('.voting-booth').addClass('has-seen-results');
         break;
     }
   }
