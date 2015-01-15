@@ -24,9 +24,8 @@
 .bar-chart-item-count {
   opacity: 0;
   margin-top: -2.5rem;
-  .voting-booth.is-viewing-results & {
+  .voting-booth.has-seen-results & {
     @include animation(bounceIn 1s);
-    @include animation-delay(2s);
     @include animation-fill-mode(forwards);
     @include media($screen-md) {
       margin-top: -3.2rem;
@@ -36,11 +35,12 @@
 
 .bar-chart-item-bar {
   @include transition(all 0.3s $base-easing);
-  background: rgba($white, 0.4);
+  background: $white;
+  opacity: 0.5;
   border-radius: 5px;
   height: 0;
   .has-new-vote & {
-    background: rgba($white, 0.6);
+    @include animation(vote 0.3s);
   }
 }
 

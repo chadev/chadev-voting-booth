@@ -114,7 +114,7 @@
   width: 100%;
   top: 0;
   display: none;
-  .voting-booth.is-viewing-thanks &, .voting-booth.has-seen-thanks &, .voting-booth.is-viewing-results & {
+  .voting-booth.is-viewing-thanks &, .voting-booth.has-seen-thanks &, .voting-booth.is-viewing-results &, .voting-booth.has-seen-results & {
     display: table;
   }
 }
@@ -167,7 +167,7 @@
   p {
     margin: 0;
   }
-  .voting-booth.is-viewing-results & {
+  .voting-booth.is-viewing-results &, .voting-booth.has-seen-results & {
     @include animation(bounceInUp 0.65s);
     @include animation-fill-mode(forwards);
     @include animation-delay(0.1s);
