@@ -38,7 +38,7 @@ CHADEV.votingBooth = {
 
       // Send data to Firebase
       var voteItem = $(this).parent();
-      var voteRef = votesRef.push({
+      votesRef.push({
         vote_lunch: {
           ended_at: Firebase.ServerValue.TIMESTAMP,
           vote: voteItem.data('vote')
@@ -49,7 +49,7 @@ CHADEV.votingBooth = {
 
         } else {
           // After button is done transitioning, show thanks prompt
-          voteItem.addClass('has-mouseup').bind(transitionEnd, function(){
+          voteItem.addClass('has-mouseup').bind(transitionEnd, function() {
             CHADEV.votingBooth.changeState('thanks');
 
             var thanksPrompt = $('.voting-booth-thanks-prompt[data-vote='+ voteItem.data('vote') +']');
@@ -57,33 +57,39 @@ CHADEV.votingBooth = {
 
             voteItem.unbind(transitionEnd);
 
-            // After showing thanks message for a bit, reset states and show the results
             setTimeout(function() {
-              thanksPrompt
-                .removeClass('is-active')
-                .unbind();
-              voteItem
-                .removeClass('has-mouseup has-mousedown');
+              // After showing thanks message for a bit, reset states and show the results
+              CHADEV.votingBooth.changeState('seen-thanks');
 
-              CHADEV.votingBooth.changeState('results');
+              thanksPrompt.bind(animationEnd, function() {
+                thanksPrompt
+                  .removeClass('is-active')
+                  .unbind();
+                voteItem
+                  .removeClass('has-mouseup has-mousedown');
 
+                CHADEV.votingBooth.changeState('results');
 
+                $('.bar-chart').bind(animationEnd, function() {
+                  setTimeout(function() {
+                    CHADEV.votingBooth.populateResults();
+                  }, 100);
+                });
+              });
 
-              //CHADEV.votingBooth.changeState('init');
+              //CHADEV.votingBooth.changeState('voting');
 
-            }, 2000)
-
-            //
-            //
-
+            }, 1000);
           });
 
           $('button.voting-booth-item-action').prop("disabled", false);
         }
       });
     });
+  },
 
-    // Populate results
+  populateResults: function() {
+    var votesRef = myFirebaseRef.child("votes");
     votesRef.on("value", function(snapshot) {
       var totalVotes = snapshot.numChildren();
       var dislikeVotes = 0;
@@ -127,24 +133,23 @@ CHADEV.votingBooth = {
   },
 
   changeState: function(state) {
+    // Remove all modifiers
+    $('.voting-booth').removeClass (function (index, css) {
+      return (css.match (/(?:is-|has-)\S+/g) || []).join(' ');
+    });
+
     switch(state) {
-      case "init":
-        // Remove all modifiers
-        $('.voting-booth').removeClass (function (index, css) {
-          return (css.match (/\is-\S+/g) || []).join(' ');
-        });
       case "voting":
         $('.voting-booth').addClass('is-voting');
         break;
+      case "seen-thanks":
+        $('.voting-booth').addClass('has-seen-thanks');
+        break;
       case "thanks":
-        $('.voting-booth')
-          .removeClass('is-voting')
-          .addClass('is-viewing-thanks');
+        $('.voting-booth').addClass('is-viewing-thanks');
         break;
       case "results":
-        $('.voting-booth')
-          .removeClass('is-voting is-viewing-thanks')
-          .addClass('is-viewing-results');
+        $('.voting-booth').addClass('is-viewing-results');
         break;
     }
   }

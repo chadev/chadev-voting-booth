@@ -2,6 +2,10 @@
   height: 100%;
   margin: 0;
   padding: 1rem 2rem;
+  .voting-booth.is-viewing-results & {
+    @include animation(bounceInUp 0.65s);
+    @include animation-fill-mode(forwards);
+  }
 }
 
 .bar-chart-item {
@@ -20,11 +24,13 @@
 .bar-chart-item-count {
   opacity: 0;
   margin-top: -2.5rem;
-  @include animation(bounceIn 1s);
-  @include animation-delay(1.5s);
-  @include animation-fill-mode(forwards);
-  @include media($screen-md) {
-    margin-top: -3.2rem;
+  .voting-booth.is-viewing-results & {
+    @include animation(bounceIn 1s);
+    @include animation-delay(2s);
+    @include animation-fill-mode(forwards);
+    @include media($screen-md) {
+      margin-top: -3.2rem;
+    }
   }
 }
 

@@ -100,14 +100,13 @@
   width: 100%;
   top: 0;
   display: none;
-  .voting-booth.is-viewing-thanks &, .voting-booth.is-viewing-results & {
+  .voting-booth.is-viewing-thanks &, .voting-booth.has-seen-thanks &, .voting-booth.is-viewing-results & {
     display: table;
   }
 }
 
 .voting-booth-thanks-prompt {
   height: 100%;
-  @include animation-fill-mode(forwards);
   padding-bottom: 3rem;
   display: none;
   &.is-active {
@@ -115,9 +114,11 @@
   }
   .voting-booth.is-viewing-thanks & {
     @include animation(bounceInUp 0.75s);
+    @include animation-fill-mode(forwards);
   }
-  .voting-booth.is-viewing-results & {
-    @include animation(bounceOutDown 0.65s);
+  .voting-booth.has-seen-thanks & {
+    @include animation(bounceOutUp 0.75s);
+    @include animation-fill-mode(forwards);
   }
   i {
     font-size: $font-size-xxxxl * 1.5;
@@ -137,23 +138,25 @@
 }
 
 .voting-booth-results {
-  display: none;
   position: fixed;
   top: 0;
   width: 100%;
   height: 100%;
   padding-bottom: 7rem;
-  .voting-booth.is-viewing-results & {
-    display: block;
-  }
 }
 
 .voting-booth-results-footer {
   width: 100%;
   height: 7rem;
   padding-top: 1rem;
+  opacity: 0;
   p {
     margin: 0;
+  }
+  .voting-booth.is-viewing-results & {
+    @include animation(bounceInUp 0.65s);
+    @include animation-fill-mode(forwards);
+    @include animation-delay(0.1s);
   }
 }
 
