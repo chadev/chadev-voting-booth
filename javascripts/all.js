@@ -20,10 +20,7 @@ CHADEV.votingBooth = {
   init: function() {
     // Forcing to go online - sometimes app gets disconnected
     Firebase.goOnline();
-
     var votesRef = myFirebaseRef.child("votes");
-
-    $('.voting-booth').addClass('is-active');
 
     var startEventType = 'mousedown';
     var endEventType   = 'mouseup';
@@ -33,6 +30,9 @@ CHADEV.votingBooth = {
       endEventType   = 'touchend';
     }
 
+    CHADEV.votingBooth.changeState('voting');
+
+    // Handle vote tap down
     $('button.voting-booth-item-action').on(startEventType, function() {
       $(this).parent().addClass('has-mousedown');
     });
@@ -41,48 +41,66 @@ CHADEV.votingBooth = {
       $('.voting-booth-item').removeClass('has-mousedown');
     });
 
+    // Handle vote tap release
     $('button.voting-booth-item-action').on(endEventType, function() {
+
+      // Disable button to prevent multiple votes from individual
       $('button.voting-booth-item-action').prop("disabled", true);
 
-      var voteItem = $(this).parent()
-
-      var voteRef = votesRef.push({
+      // Send data to Firebase
+      var voteItem = $(this).parent();
+      votesRef.push({
         vote_lunch: {
           ended_at: Firebase.ServerValue.TIMESTAMP,
           vote: voteItem.data('vote')
         }
       }, function(error) {
         if(error) {
-          alert("Data could not be saved :( Jordan has failed you.")
+          alert("Data could not be saved :( Jordan has failed you.");
+
         } else {
-          var result = $('.voting-booth-thanks-prompt[data-vote='+ voteItem.data('vote') +']');
+          // After button is done transitioning, show thanks prompt
+          voteItem.addClass('has-mouseup').bind(transitionEnd, function() {
+            CHADEV.votingBooth.changeState('thanks');
 
-          voteItem.addClass('is-active').bind(transitionEnd, function(){
-            result.addClass('has-voted');
-            $('.voting-booth').removeClass('is-active');
+            var thanksPrompt = $('.voting-booth-thanks-prompt[data-vote='+ voteItem.data('vote') +']');
+            thanksPrompt.addClass('is-active');
+
             voteItem.unbind(transitionEnd);
-            setTimeout(function() {
-              result
-              .removeClass('has-voted')
-              .addClass('has-seen-results')
-              .unbind();
-              voteItem
-              .removeClass('is-active');
 
-              result.bind(animationEnd, function(){
-                result
-                .removeClass('has-seen-results')
-                .unbind();
-                $('.voting-booth').addClass('is-active');
+            setTimeout(function() {
+              // After showing thanks message for a bit, reset states and show the results
+              CHADEV.votingBooth.changeState('seen-thanks');
+
+              thanksPrompt.bind(animationEnd, function() {
+                thanksPrompt
+                  .removeClass('is-active')
+                  .unbind();
+                voteItem
+                  .removeClass('has-mouseup has-mousedown');
+
+                CHADEV.votingBooth.changeState('results');
+
+                $('.bar-chart').bind(animationEnd, function() {
+                  setTimeout(function() {
+                    CHADEV.votingBooth.populateResults();
+                  }, 100);
+                });
               });
-            }, 1000)
+
+              //CHADEV.votingBooth.changeState('voting');
+
+            }, 1000);
           });
 
           $('button.voting-booth-item-action').prop("disabled", false);
         }
       });
     });
+  },
 
+  populateResults: function() {
+    var votesRef = myFirebaseRef.child("votes");
     votesRef.on("value", function(snapshot) {
       var totalVotes = snapshot.numChildren();
       var dislikeVotes = 0;
@@ -124,6 +142,28 @@ CHADEV.votingBooth = {
       barChartItem.removeClass('has-new-vote');
     }, 500);
   },
+
+  changeState: function(state) {
+    // Remove all modifiers
+    $('.voting-booth').removeClass (function (index, css) {
+      return (css.match (/(?:is-|has-)\S+/g) || []).join(' ');
+    });
+
+    switch(state) {
+      case "voting":
+        $('.voting-booth').addClass('is-voting');
+        break;
+      case "seen-thanks":
+        $('.voting-booth').addClass('has-seen-thanks');
+        break;
+      case "thanks":
+        $('.voting-booth').addClass('is-viewing-thanks');
+        break;
+      case "results":
+        $('.voting-booth').addClass('is-viewing-results');
+        break;
+    }
+  }
 }
 
 $(function() {
