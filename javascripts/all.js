@@ -15,10 +15,31 @@ var transitionEnd = "transitionend webkitTransitionEnd oTransitionEnd otransitio
 var CHADEV = CHADEV || {};
 
 CHADEV.votingBooth = {
-  init: function() {
+  init: function(mode) {
+    switch(mode) {
+      case "demo":
+        this.mode = "demo"
+        // Override dev/prod firebase reference to use demo data
+        this.firebaseRef = new Firebase("https://chadev-voting-demo.firebaseio.com/");
+        this.showResults = true;
+        this.closeResults = true;
+        break;
+      case "kiosk":
+        this.mode = "kiosk"
+        this.showResults = false;
+        this.closeResults = false;
+        break;
+      default:
+        this.mode = "individual"
+        this.showResults = true;
+        this.closeResults = false;
+    }
+
+    console.log("Initializing voting booth ("+ this.mode +" mode)")
+
     // Forcing to go online - sometimes app gets disconnected
     Firebase.goOnline();
-    var votesRef = myFirebaseRef.child("votes");
+    this.votesRef = this.firebaseRef.child("votes");
 
     var startEventType = 'mousedown';
     var endEventType   = 'mouseup';
@@ -47,7 +68,7 @@ CHADEV.votingBooth = {
 
       // Send data to Firebase
       var voteItem = $(this).parent();
-      votesRef.push({
+      CHADEV.votingBooth.votesRef.push({
         vote_lunch: {
           ended_at: Firebase.ServerValue.TIMESTAMP,
           vote: voteItem.data('vote')
@@ -98,8 +119,7 @@ CHADEV.votingBooth = {
   },
 
   populateResults: function() {
-    var votesRef = myFirebaseRef.child("votes");
-    votesRef.on("value", function(snapshot) {
+    CHADEV.votingBooth.votesRef.on("value", function(snapshot) {
       var totalVotes = snapshot.numChildren();
       var dislikeVotes = 0;
       var neutralVotes = 0;
@@ -177,10 +197,25 @@ CHADEV.votingBooth = {
   }
 }
 
+function getUrlParameter(sParam)
+{
+  var sPageURL = window.location.search.substring(1);
+  var sURLVariables = sPageURL.split('&');
+  for (var i = 0; i < sURLVariables.length; i++)
+  {
+    var sParameterName = sURLVariables[i].split('=');
+    if (sParameterName[0] == sParam)
+    {
+      return sParameterName[1];
+    }
+  }
+}
+
+
 $(function() {
   FastClick.attach(document.body);
 });
 
 $(window).load(function() {
-  CHADEV.votingBooth.init();
+  CHADEV.votingBooth.init(getUrlParameter('mode'));
 });

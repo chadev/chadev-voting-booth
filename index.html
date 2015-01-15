@@ -11,12 +11,13 @@
     <title>#Chadev Voting Booth</title>
 
     <script src='https://cdn.firebase.com/js/client/2.0.4/firebase.js'></script>
-    <script type="text/javascript">
-        var myFirebaseRef = new Firebase("https://chadev-voting-prod.firebaseio.com/");
 
-    </script>
     <link href="stylesheets/application.css" rel="stylesheet" type="text/css" />
     <script src="javascripts/all.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        CHADEV.votingBooth.firebaseRef = new Firebase("https://chadev-voting-prod.firebaseio.com/");
+    </script>
   </head>
 
   <body>
