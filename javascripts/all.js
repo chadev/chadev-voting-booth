@@ -81,10 +81,8 @@ CHADEV.votingBooth = {
                 CHADEV.votingBooth.changeState('results');
 
                 $('.bar-chart').bind(animationEnd, function() {
-                  setTimeout(function() {
-                    CHADEV.votingBooth.populateResults();
-                    $('.bar-chart').unbind(animationEnd);
-                  }, 100);
+                  CHADEV.votingBooth.populateResults();
+                  $('.bar-chart').unbind(animationEnd);
                 });
               });
 
