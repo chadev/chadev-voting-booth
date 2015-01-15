@@ -22,6 +22,8 @@ CHADEV.votingBooth = {
       endEventType   = 'touchend';
     }
 
+
+    // Handle vote tap down
     $('button.voting-booth-item-action').on(startEventType, function() {
       $(this).parent().addClass('has-mousedown');
     });
@@ -30,11 +32,13 @@ CHADEV.votingBooth = {
       $('.voting-booth-item').removeClass('has-mousedown');
     });
 
+    // Handle vote tap release
     $('button.voting-booth-item-action').on(endEventType, function() {
+
+      // Disable button to prevent multiple votes from individual
       $('button.voting-booth-item-action').prop("disabled", true);
 
-      var voteItem = $(this).parent()
-
+      var voteItem = $(this).parent();
       var voteRef = votesRef.push({
         vote_lunch: {
           ended_at: Firebase.ServerValue.TIMESTAMP,
@@ -44,24 +48,25 @@ CHADEV.votingBooth = {
         if(error) {
           alert("Data could not be saved :( Jordan has failed you.")
         } else {
-          var result = $('.voting-booth-thanks-prompt[data-vote='+ voteItem.data('vote') +']');
+          var thanksPrompt = $('.voting-booth-thanks-prompt[data-vote='+ voteItem.data('vote') +']');
 
           voteItem.addClass('is-active').bind(transitionEnd, function(){
-            result.addClass('has-voted');
+            thanksPrompt.addClass('has-voted');
             $('.voting-booth').removeClass('is-active');
             voteItem.unbind(transitionEnd);
             setTimeout(function() {
-              result
-              .removeClass('has-voted')
-              .addClass('has-seen-results')
-              .unbind();
-              voteItem
-              .removeClass('is-active');
-
-              result.bind(animationEnd, function(){
-                result
-                .removeClass('has-seen-results')
+              thanksPrompt
+                .removeClass('has-voted')
+                .addClass('has-seen-results')
                 .unbind();
+              voteItem
+                .removeClass('is-active');
+
+              thanksPrompt.bind(animationEnd, function(){
+                thanksPrompt
+                  .removeClass('has-seen-results')
+                  .unbind();
+
                 $('.voting-booth').addClass('is-active');
               });
             }, 1000)
@@ -72,6 +77,7 @@ CHADEV.votingBooth = {
       });
     });
 
+    // Populate results
     votesRef.on("value", function(snapshot) {
       var totalVotes = snapshot.numChildren();
       var dislikeVotes = 0;
