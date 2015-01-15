@@ -15,6 +15,20 @@
   vertical-align: middle;
 }
 
+.branding {
+  margin: 0 0 1rem;
+  text-align: center;
+  opacity: 0;
+  .voting-booth.is-voting & {
+    @include animation(moveInDown 0.5s $base-easing);
+    @include animation-fill-mode(forwards);
+  }
+}
+
+.branding-logo {
+  width: 120px;
+}
+
 .voting-booth-question {
   @include transition(opacity 0.5s);
   opacity: 0;
