@@ -9,10 +9,7 @@ CHADEV.votingBooth = {
   init: function() {
     // Forcing to go online - sometimes app gets disconnected
     Firebase.goOnline();
-
     var votesRef = myFirebaseRef.child("votes");
-
-    $('.voting-booth').addClass('is-active');
 
     var startEventType = 'mousedown';
     var endEventType   = 'mouseup';
@@ -22,6 +19,7 @@ CHADEV.votingBooth = {
       endEventType   = 'touchend';
     }
 
+    CHADEV.votingBooth.changeState('voting');
 
     // Handle vote tap down
     $('button.voting-booth-item-action').on(startEventType, function() {
@@ -38,6 +36,7 @@ CHADEV.votingBooth = {
       // Disable button to prevent multiple votes from individual
       $('button.voting-booth-item-action').prop("disabled", true);
 
+      // Send data to Firebase
       var voteItem = $(this).parent();
       var voteRef = votesRef.push({
         vote_lunch: {
@@ -46,30 +45,37 @@ CHADEV.votingBooth = {
         }
       }, function(error) {
         if(error) {
-          alert("Data could not be saved :( Jordan has failed you.")
-        } else {
-          var thanksPrompt = $('.voting-booth-thanks-prompt[data-vote='+ voteItem.data('vote') +']');
+          alert("Data could not be saved :( Jordan has failed you.");
 
-          voteItem.addClass('is-active').bind(transitionEnd, function(){
-            thanksPrompt.addClass('has-voted');
-            $('.voting-booth').removeClass('is-active');
+        } else {
+          // After button is done transitioning, show thanks prompt
+          voteItem.addClass('has-mouseup').bind(transitionEnd, function(){
+            CHADEV.votingBooth.changeState('thanks');
+
+            var thanksPrompt = $('.voting-booth-thanks-prompt[data-vote='+ voteItem.data('vote') +']');
+            thanksPrompt.addClass('is-active');
+
             voteItem.unbind(transitionEnd);
+
+            // After showing thanks message for a bit, reset states and show the results
             setTimeout(function() {
               thanksPrompt
-                .removeClass('has-voted')
-                .addClass('has-seen-results')
+                .removeClass('is-active')
                 .unbind();
               voteItem
-                .removeClass('is-active');
+                .removeClass('has-mouseup has-mousedown');
 
-              thanksPrompt.bind(animationEnd, function(){
-                thanksPrompt
-                  .removeClass('has-seen-results')
-                  .unbind();
+              CHADEV.votingBooth.changeState('results');
 
-                $('.voting-booth').addClass('is-active');
-              });
-            }, 1000)
+
+
+              //CHADEV.votingBooth.changeState('init');
+
+            }, 2000)
+
+            //
+            //
+
           });
 
           $('button.voting-booth-item-action').prop("disabled", false);
@@ -119,6 +125,29 @@ CHADEV.votingBooth = {
       barChartItem.removeClass('has-new-vote');
     }, 500);
   },
+
+  changeState: function(state) {
+    switch(state) {
+      case "init":
+        // Remove all modifiers
+        $('.voting-booth').removeClass (function (index, css) {
+          return (css.match (/\is-\S+/g) || []).join(' ');
+        });
+      case "voting":
+        $('.voting-booth').addClass('is-voting');
+        break;
+      case "thanks":
+        $('.voting-booth')
+          .removeClass('is-voting')
+          .addClass('is-viewing-thanks');
+        break;
+      case "results":
+        $('.voting-booth')
+          .removeClass('is-voting is-viewing-thanks')
+          .addClass('is-viewing-results');
+        break;
+    }
+  }
 }
 
 $(function() {

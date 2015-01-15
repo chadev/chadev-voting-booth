@@ -18,7 +18,7 @@
 .voting-booth-question {
   @include transition(opacity 0.5s);
   opacity: 0;
-  .voting-booth.is-active & {
+  .voting-booth.is-voting & {
     opacity: 1;
   }
 }
@@ -30,7 +30,7 @@
   line-height: 1.1;
   margin-bottom: 2rem;
   opacity: 0;
-  .voting-booth.is-active & {
+  .voting-booth.is-voting & {
     @include animation(moveInDown 0.5s $base-easing);
     @include animation-delay(0.25s);
     @include animation-fill-mode(forwards);
@@ -55,7 +55,7 @@
   color: $white;
   opacity: 0;
   @include span-columns(4);
-  .voting-booth.is-active & {
+  .voting-booth.is-voting & {
     @include animation(bounceIn 0.95s);
     @include animation-fill-mode(forwards);
     @include animation-delay(0.8s);
@@ -78,7 +78,7 @@
     @include transition(transform 0.05s $base-easing);
     @include transform(scale(0.9,0.9));
   }
-  .voting-booth-item.is-active & {
+  .voting-booth-item.has-mouseup & {
     @include transition(transform 0.05s $base-easing, opacity 0.1s $base-easing);
     @include transform(scale(1.3, 1.3));
     opacity: 0.25;
@@ -99,9 +99,9 @@
   height: 110%;
   width: 100%;
   top: 0;
-  display: table;
-  .voting-booth.is-active & {
-    display: none;
+  display: none;
+  .voting-booth.is-viewing-thanks &, .voting-booth.is-viewing-results & {
+    display: table;
   }
 }
 
@@ -110,15 +110,14 @@
   @include animation-fill-mode(forwards);
   padding-bottom: 3rem;
   display: none;
-
-  &.has-voted {
-    @include animation(bounceInUp 0.75s);
+  &.is-active {
     display: table-cell;
-
   }
-  &.has-seen-results {
+  .voting-booth.is-viewing-thanks & {
+    @include animation(bounceInUp 0.75s);
+  }
+  .voting-booth.is-viewing-results & {
     @include animation(bounceOutDown 0.65s);
-    display: table-cell;
   }
   i {
     font-size: $font-size-xxxxl * 1.5;
@@ -144,6 +143,9 @@
   width: 100%;
   height: 100%;
   padding-bottom: 7rem;
+  .voting-booth.is-viewing-results & {
+    display: block;
+  }
 }
 
 .voting-booth-results-footer {
