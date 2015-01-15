@@ -12,8 +12,6 @@ function FastClick(t,e){"use strict";function i(t,e){return function(){return t.
 var animationEnd = "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd";
 var transitionEnd = "transitionend webkitTransitionEnd oTransitionEnd otransitionend";
 
-var myFirebaseRef = new Firebase("https://fiery-torch-8389.firebaseio.com/");
-
 var CHADEV = CHADEV || {};
 
 CHADEV.votingBooth = {
