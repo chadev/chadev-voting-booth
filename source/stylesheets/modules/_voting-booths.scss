@@ -72,7 +72,15 @@
   .voting-booth.is-voting & {
     @include animation(bounceIn 0.95s);
     @include animation-fill-mode(forwards);
-    @include animation-delay(0.8s);
+    &:nth-child(1){
+      @include animation-delay(0.7s);
+    }
+    &:nth-child(2){
+      @include animation-delay(0.85s);
+    }
+    &:nth-child(3){
+      @include animation-delay(1s);
+    }
   }
 }
 
