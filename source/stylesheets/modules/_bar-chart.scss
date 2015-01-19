@@ -1,7 +1,10 @@
 .bar-chart {
   height: 100%;
   margin: 0;
-  padding: 1rem 2rem;
+  padding: 1rem 2rem 2rem;
+  @include media($screen-lg) {
+    padding-bottom: 3rem;
+  }
   .voting-booth.is-viewing-results & {
     @include animation(bounceInUp 0.65s);
     @include animation-fill-mode(forwards);
