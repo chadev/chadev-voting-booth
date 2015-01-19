@@ -125,6 +125,10 @@
   .voting-booth.is-viewing-thanks &, .voting-booth.has-seen-thanks &, .voting-booth.is-viewing-results &, .voting-booth.has-seen-results & {
     display: table;
   }
+  .voting-booth.voting-booth-mode-kiosk.has-seen-thanks & {
+    @include animation(bounceOutUp 0.75s);
+    @include animation-fill-mode(forwards);
+  }
 }
 
 .voting-booth-thanks-prompt {
