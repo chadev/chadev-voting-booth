@@ -226,7 +226,6 @@ $(window).load(function() {
     console.log('Initiating with cookie: ' + mode)
   } else {
     getUrlParameter('mode');
-    console.log('Initiating with URL parameter: ' + mode)
   }
   CHADEV.votingBooth.init(mode);
 });
