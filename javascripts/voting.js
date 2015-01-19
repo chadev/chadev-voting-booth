@@ -12,11 +12,13 @@ CHADEV.votingBooth = {
         this.firebaseRef = new Firebase("https://chadev-voting-demo.firebaseio.com/");
         this.showResults = true;
         this.closeResults = true;
+        $.cookie('mode', this.mode, { expires: 365 });
         break;
       case "kiosk":
         this.mode = "kiosk"
         this.showResults = false;
         this.closeResults = false;
+        $.cookie('mode', this.mode, { expires: 5 });
         break;
       default:
         this.mode = "individual"
@@ -25,6 +27,7 @@ CHADEV.votingBooth = {
     }
 
     console.log("Initializing voting booth ("+ this.mode +" mode)")
+    $('.voting-booth').addClass('voting-booth-mode-' + this.mode);
 
     // Forcing to go online - sometimes app gets disconnected
     Firebase.goOnline();
@@ -82,23 +85,26 @@ CHADEV.votingBooth = {
 
               thanksPrompt.bind(animationEnd, function() {
                 thanksPrompt
-                  .removeClass('is-active')
-                  .unbind(animationEnd);
+                .removeClass('is-active')
+                .unbind(animationEnd);
                 voteItem
-                  .removeClass('has-mouseup has-mousedown')
-                  .unbind(transitionEnd);
+                .removeClass('has-mouseup has-mousedown')
+                .unbind(transitionEnd);
 
-                CHADEV.votingBooth.changeState('results');
+                if(CHADEV.votingBooth.showResults == true) {
+                  CHADEV.votingBooth.changeState('results');
 
-                $('.bar-chart').bind(animationEnd, function() {
-                  CHADEV.votingBooth.populateResults();
-                  $('.bar-chart').unbind(animationEnd);
-                });
+                  $('.bar-chart').bind(animationEnd, function() {
+                    CHADEV.votingBooth.populateResults();
+                    $('.bar-chart').unbind(animationEnd);
+                  });
+                } else {
+                  console.log('In kiosk mode, skipping results');
+                  CHADEV.votingBooth.changeState('voting');
+                }
               });
-
-              //CHADEV.votingBooth.changeState('voting');
-
             }, 1000);
+
           });
 
           $('button.voting-booth-item-action').prop("disabled", false);
