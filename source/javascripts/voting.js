@@ -2,6 +2,7 @@ var animationEnd = "animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd
 var transitionEnd = "transitionend webkitTransitionEnd oTransitionEnd otransitionend";
 
 var CHADEV = CHADEV || {};
+var IS_VOTING_DAY = Date.today().is().thursday();
 
 CHADEV.votingBooth = {
   init: function(mode) {
@@ -12,7 +13,7 @@ CHADEV.votingBooth = {
         this.firebaseRef = new Firebase("https://chadev-voting-demo.firebaseio.com/");
         this.showResults = true;
         this.closeResults = true;
-        $.cookie('mode', this.mode, { expires: 365 });
+        $.cookie('mode', this.mode, { expires: 1 });
         break;
       case "kiosk":
         this.mode = "kiosk"
@@ -41,7 +42,15 @@ CHADEV.votingBooth = {
       endEventType   = 'touchend';
     }
 
-    CHADEV.votingBooth.changeState('voting');
+    console.log('CHADEV.votingBooth.mode',CHADEV.votingBooth.mode)
+    if(IS_VOTING_DAY || CHADEV.votingBooth.mode == 'demo') {
+      this.changeState('voting');
+    } else {
+      this.changeState('closed');
+      $('.trigger-demo-mode').on('click', function(){
+        CHADEV.votingBooth.init('demo');
+      })
+    }
 
     // Handle vote tap down
     $('button.voting-booth-item-action').on(startEventType, function() {
@@ -173,6 +182,9 @@ CHADEV.votingBooth = {
     });
 
     switch(state) {
+      case "closed":
+        $('.voting-booth').addClass('is-closed');
+        break;
       case "voting":
         $('.voting-booth').addClass('is-voting');
         break;
@@ -212,5 +224,12 @@ $(function() {
 });
 
 $(window).load(function() {
-  CHADEV.votingBooth.init(getUrlParameter('mode'));
+  if($.cookie('mode') !== undefined) {
+    var mode = $.cookie('mode');$.cookie('mode');
+    console.log('Initiating with cookie: ' + mode)
+  } else {
+    getUrlParameter('mode');
+    console.log('Initiating with URL parameter: ' + mode)
+  }
+  CHADEV.votingBooth.init(mode);
 });

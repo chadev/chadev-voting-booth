@@ -5,7 +5,6 @@ html, body {
 }
 
 body {
-  background: $blue image-url("background-patterns/science-illustration.png");
   text-align: center;
   @include transition(font-size 0.2s);
   @include media($screen-sm) {
