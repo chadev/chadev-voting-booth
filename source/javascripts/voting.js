@@ -47,9 +47,6 @@ CHADEV.votingBooth = {
       this.changeState('voting');
     } else {
       this.changeState('closed');
-      $('.trigger-demo-mode').on('click', function(){
-        CHADEV.votingBooth.init('demo');
-      })
     }
 
     // Handle vote tap down
