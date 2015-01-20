@@ -848,18 +848,20 @@ body {
   top: 0;
   width: 100%;
   height: 100%;
-  padding-bottom: 7rem; }
+  padding-bottom: 5rem; }
+  @media screen and (min-width: 1024px) {
+    /* line 172, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
+    .voting-booth-results {
+      padding-bottom: 8rem; } }
 
-/* line 180, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
+/* line 183, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
 .voting-booth-results-footer {
   width: 100%;
-  height: 7rem;
-  padding-top: 1rem;
   opacity: 0; }
-  /* line 185, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
+  /* line 186, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
   .voting-booth-results-footer p {
     margin: 0; }
-  /* line 188, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
+  /* line 189, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
   .voting-booth.is-viewing-results .voting-booth-results-footer, .voting-booth.has-seen-results .voting-booth-results-footer {
     -webkit-animation: bounceInUp 0.65s;
     -moz-animation: bounceInUp 0.65s;
@@ -871,24 +873,28 @@ body {
     -moz-animation-delay: 0.1s;
     animation-delay: 0.1s; }
 
-/* line 195, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
+/* line 196, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
 .voting-booth-byline {
   font-weight: normal;
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.9em; }
-  /* line 199, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
+  /* line 200, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
   .voting-booth-byline a {
     color: rgba(255, 255, 255, 0.5);
     text-decoration: underline; }
 
-/* line 205, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
+/* line 206, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
 .voting-booth.is-closed {
-  background-color: #363637; }
+  background-color: #363637;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%; }
 
-/* line 209, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
+/* line 214, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
 .voting-booth-closed-prompt-container {
   display: none; }
-  /* line 211, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
+  /* line 216, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
   .voting-booth.is-closed .voting-booth-closed-prompt-container {
     display: table;
     -webkit-animation: bounceInUp 0.75s;
@@ -902,8 +908,12 @@ body {
 .bar-chart {
   height: 100%;
   margin: 0;
-  padding: 1rem 2rem; }
-  /* line 5, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
+  padding: 1rem 2rem 2rem; }
+  @media screen and (min-width: 1024px) {
+    /* line 1, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
+    .bar-chart {
+      padding-bottom: 3rem; } }
+  /* line 8, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
   .voting-booth.is-viewing-results .bar-chart {
     -webkit-animation: bounceInUp 0.65s;
     -moz-animation: bounceInUp 0.65s;
@@ -912,7 +922,7 @@ body {
     -moz-animation-fill-mode: forwards;
     animation-fill-mode: forwards; }
 
-/* line 11, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
+/* line 14, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
 .bar-chart-item {
   float: left;
   display: block;
@@ -924,18 +934,18 @@ body {
   .bar-chart-item:last-child {
     margin-right: 0; }
 
-/* line 17, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
+/* line 20, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
 .bar-chart-item-label, .bar-chart-item-bar {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%; }
 
-/* line 24, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
+/* line 27, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
 .bar-chart-item-count {
   opacity: 0;
   margin-top: -2.5rem; }
-  /* line 27, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
+  /* line 30, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
   .voting-booth.has-seen-results .bar-chart-item-count {
     -webkit-animation: bounceIn 1s;
     -moz-animation: bounceIn 1s;
@@ -944,11 +954,11 @@ body {
     -moz-animation-fill-mode: forwards;
     animation-fill-mode: forwards; }
     @media screen and (min-width: 768px) {
-      /* line 27, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
+      /* line 30, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
       .voting-booth.has-seen-results .bar-chart-item-count {
         margin-top: -3.2rem; } }
 
-/* line 36, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
+/* line 39, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
 .bar-chart-item-bar {
   -webkit-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
   -moz-transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -957,13 +967,13 @@ body {
   opacity: 0.5;
   border-radius: 5px;
   height: 0; }
-  /* line 42, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
+  /* line 45, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
   .has-new-vote .bar-chart-item-bar {
     -webkit-animation: vote 0.3s;
     -moz-animation: vote 0.3s;
     animation: vote 0.3s; }
 
-/* line 47, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
+/* line 50, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
 .bar-chart-item-label {
   font-size: 4.5em;
   bottom: 0;

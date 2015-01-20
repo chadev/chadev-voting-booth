@@ -47,9 +47,6 @@ CHADEV.votingBooth = {
       this.changeState('voting');
     } else {
       this.changeState('closed');
-      $('.trigger-demo-mode').on('click', function(){
-        CHADEV.votingBooth.init('demo');
-      })
     }
 
     // Handle vote tap down
@@ -228,8 +225,7 @@ $(window).load(function() {
     var mode = $.cookie('mode');$.cookie('mode');
     console.log('Initiating with cookie: ' + mode)
   } else {
-    getUrlParameter('mode');
-    console.log('Initiating with URL parameter: ' + mode)
+    var mode = getUrlParameter('mode');
   }
   CHADEV.votingBooth.init(mode);
 });
