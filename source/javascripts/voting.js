@@ -225,7 +225,7 @@ $(window).load(function() {
     var mode = $.cookie('mode');$.cookie('mode');
     console.log('Initiating with cookie: ' + mode)
   } else {
-    getUrlParameter('mode');
+    var mode = getUrlParameter('mode');
   }
   CHADEV.votingBooth.init(mode);
 });
