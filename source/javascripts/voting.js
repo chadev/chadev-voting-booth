@@ -109,7 +109,7 @@ CHADEV.votingBooth = {
                   CHADEV.votingBooth.changeState('voting');
                 }
               });
-            }, 1000);
+            }, 1400);
 
           });
 
