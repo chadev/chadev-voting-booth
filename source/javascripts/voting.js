@@ -11,19 +11,19 @@ CHADEV.votingBooth = {
         this.mode = "demo"
         // Override dev/prod firebase reference to use demo data
         this.firebaseRef = new Firebase("https://chadev-voting-demo.firebaseio.com/");
-        this.showResults = true;
+        this.multipleVotes = true;
         this.closeResults = true;
         $.cookie('mode', this.mode, { expires: 1 });
         break;
       case "kiosk":
         this.mode = "kiosk"
-        this.showResults = false;
+        this.multipleVotes = true;
         this.closeResults = false;
         $.cookie('mode', this.mode, { expires: 5 });
         break;
       default:
         this.mode = "individual"
-        this.showResults = true;
+        this.multipleVotes = false;
         this.closeResults = false;
     }
 
@@ -74,8 +74,13 @@ CHADEV.votingBooth = {
       }, function(error) {
         if(error) {
           alert("Data could not be saved :( Jordan has failed you.");
+          console.log("Error code: " + error.code);
 
         } else {
+          if(!CHADEV.votingBooth.multipleVotes) {
+            $.cookie('voted', true, { expires: 5 });
+          };
+
           // After button is done transitioning, show thanks prompt
           voteItem.addClass('has-mouseup').bind(transitionEnd, function() {
             CHADEV.votingBooth.changeState('thanks');
@@ -97,16 +102,16 @@ CHADEV.votingBooth = {
                 .removeClass('has-mouseup has-mousedown')
                 .unbind(transitionEnd);
 
-                if(CHADEV.votingBooth.showResults == true) {
+                if(CHADEV.votingBooth.multipleVotes) {
+                  console.log('In kiosk mode, skipping results');
+                  CHADEV.votingBooth.changeState('voting');
+                } else {
                   CHADEV.votingBooth.changeState('results');
 
                   $('.bar-chart').bind(animationEnd, function() {
                     CHADEV.votingBooth.populateResults();
                     $('.bar-chart').unbind(animationEnd);
                   });
-                } else {
-                  console.log('In kiosk mode, skipping results');
-                  CHADEV.votingBooth.changeState('voting');
                 }
               });
             }, 1400);
@@ -227,5 +232,12 @@ $(window).load(function() {
   } else {
     var mode = getUrlParameter('mode');
   }
+
   CHADEV.votingBooth.init(mode);
+
+  if($.cookie('voted')) {
+    console.log('Already voted, showing results')
+    CHADEV.votingBooth.changeState('results');
+    CHADEV.votingBooth.populateResults();
+  }
 });
