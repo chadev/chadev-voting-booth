@@ -13,18 +13,21 @@ CHADEV.votingBooth = {
         this.firebaseRef = new Firebase("https://chadev-voting-demo.firebaseio.com/");
         this.multipleVotes = true;
         this.closeResults = true;
+        this.thanksDelay = 1400;
         $.cookie('mode', this.mode, { expires: 1 });
         break;
       case "kiosk":
         this.mode = "kiosk"
         this.multipleVotes = true;
         this.closeResults = false;
+        this.thanksDelay = 1000;
         $.cookie('mode', this.mode, { expires: 5 });
         break;
       default:
         this.mode = "individual"
         this.multipleVotes = false;
         this.closeResults = false;
+        this.thanksDelay = 1400;
     }
 
     console.log("Initializing voting booth ("+ this.mode +" mode)")
@@ -114,7 +117,7 @@ CHADEV.votingBooth = {
                   });
                 }
               });
-            }, 1400);
+            }, CHADEV.votingBooth.thanksDelay);
 
           });
 
