@@ -20,7 +20,7 @@ CHADEV.votingBooth = {
         this.mode = "kiosk"
         this.multipleVotes = true;
         this.closeResults = false;
-        this.thanksDelay = 1000;
+        this.thanksDelay = 800;
         $.cookie('mode', this.mode, { expires: 5 });
         break;
       default:
