@@ -18,8 +18,10 @@
     <script type="text/javascript">
       <% if development? %>
         CHADEV.votingBooth.firebaseRef = new Firebase("https://chadev-voting-dev.firebaseio.com/");
+        console.log("Using dev db")
       <% elsif build? %>
         CHADEV.votingBooth.firebaseRef = new Firebase("https://chadev-voting-prod.firebaseio.com/");
+        console.log("Using prod db")
       <% end %>
     </script>
   </head>
