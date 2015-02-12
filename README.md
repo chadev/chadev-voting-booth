@@ -26,7 +26,7 @@ All development production data is posted to: http://chadev-voting-prod.firebase
 
 ### Modes
 
-There are three different modes:
+There are three different modes which can be set via URL parameter eg. http://vote.chadev.com?mode=kiosk
 
 1. Individual (default)
 This is the URL that we pass around for individuals to access via their mobile devices. They get one vote and then they see the results page. Users are shown a closed voting screen if trying to access the page on a day that's not a Thursday (meeting day).
@@ -37,7 +37,7 @@ Demo mode is exactly like individual mode but never shows a closed screen and re
 3. Kiosk (?mode=kiosk)
 Unlike individual mode, kiosk mode allows us to keep capturing new votes without ever showing the results page. This is used for gathering input from many individuals (eg. on an ipad on the way out of the office).
 
-Short URL: http://git.io/booth
+Short URL: http://git.io/booth (no need to add ?mode=kiosk, it's already set in the short URL)
 
 
 ### Credits
