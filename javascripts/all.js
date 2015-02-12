@@ -362,13 +362,21 @@ CHADEV.votingBooth = {
   },
 
   populateResults: function() {
-    CHADEV.votingBooth.votesRef.on("value", function(snapshot) {
+    var ref = CHADEV.votingBooth.votesRef;
+    var sixDays = 6 * 24 * 60 * 60 * 1000;
+    var startAt = new Date().getTime() - sixDays;
+
+    ref.on("value", function(snapshot) {
       var totalVotes = snapshot.numChildren();
       var dislikeVotes = 0;
       var neutralVotes = 0;
       var likeVotes = 0;
 
       snapshot.forEach(function(voteSnapshot) {
+        if(voteSnapshot.child('vote_lunch/ended_at').val() < startAt) {
+          return;
+        }
+
         switch(voteSnapshot.child('vote_lunch/vote').val()) {
           case "dislike":
             dislikeVotes += 1;
