@@ -15,7 +15,9 @@ Application is built on top of [Middleman](http://middlemanapp.com) and uses [Bo
 
 ### Deploy
 
-This app uses 'middleman-gh-pages' gem which adds a rake file to deploy the Middleman build static files to gh-pages branch. Run `rake publish` from console to publish to: http://chadev.github.io/chadev-voting-booth/
+This app uses 'middleman-gh-pages' gem which adds a rake file to deploy the Middleman build static files to gh-pages branch. Run `rake publish` from console to publish to: 
+
+http://vote.chadev.com
 
 
 ### Credits
