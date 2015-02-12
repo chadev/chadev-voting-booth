@@ -245,6 +245,7 @@ CHADEV.votingBooth = {
         this.mode = "demo"
         // Override dev/prod firebase reference to use demo data
         this.firebaseRef = new Firebase("https://chadev-voting-demo.firebaseio.com/");
+        console.log("Using demo db")
         this.multipleVotes = true;
         this.closeResults = true;
         this.thanksDelay = 1400;
