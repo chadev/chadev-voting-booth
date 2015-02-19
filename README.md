@@ -48,6 +48,7 @@ Created by:
 
 Contributors:
 
+* Alex Cruickshank - [@sivoh](https://github.com/sivoh) - http://twitter.com/sivoh
 * Chris Keathley - [@keathley](http://github.com/keathley) - https://twitter.com/ChrisKeathley
 
 
