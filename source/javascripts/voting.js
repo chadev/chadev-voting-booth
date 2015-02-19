@@ -9,9 +9,7 @@ CHADEV.votingBooth = {
     switch(mode) {
       case "demo":
         this.mode = "demo"
-        // Override dev/prod firebase reference to use demo data
-        this.firebaseRef = new Firebase("https://chadev-voting-demo.firebaseio.com/");
-        console.log("Using demo db")
+        this.db = "demo"
         this.multipleVotes = true;
         this.closeResults = true;
         this.thanksDelay = 1400;
@@ -31,6 +29,9 @@ CHADEV.votingBooth = {
         this.thanksDelay = 1400;
     }
 
+    this.firebaseRef = new Firebase("https://chadev-voting-"+ this.db +".firebaseio.com/");
+    console.log("using " + this.db + " firebase db")
+
     console.log("Initializing voting booth ("+ this.mode +" mode)")
     $('.voting-booth').addClass('voting-booth-mode-' + this.mode);
 
@@ -47,10 +48,10 @@ CHADEV.votingBooth = {
     }
 
     console.log('CHADEV.votingBooth.mode',CHADEV.votingBooth.mode)
-    if(IS_VOTING_DAY || CHADEV.votingBooth.mode == 'demo') {
-      this.changeState('voting');
-    } else {
+    if(!IS_VOTING_DAY && CHADEV.votingBooth.db == 'prod') {
       this.changeState('closed');
+    } else {
+      this.changeState('voting');
     }
 
     // Handle vote tap down
