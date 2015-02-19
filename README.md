@@ -48,10 +48,10 @@ Created by:
 
 Contributors:
 
-* Alex Cruickshank - [@sivoh](https://github.com/sivoh) - http://twitter.com/sivoh
-* Chris Keathley - [@keathley](http://github.com/keathley) - https://twitter.com/ChrisKeathley
+* [Alex Cruickshank](https://github.com/sivoh) - ([@sivoh](http://twitter.com/sivoh))
+* [Chris Keathley](http://github.com/keathley) - ([@ChrisKeathley](https://twitter.com/ChrisKeathley))
 
+Illustrations:
 
-Original background illustration courtesy of: [Fabricio Rosa Marques](http://fabric8.de/) via [The Pattern Library](http://thepatternlibrary.com/#science)
-
-Original facial expression icons courtesy of: [Megan Sheehan](http://megansheehan.info/) via [IconDeposit](http://www.icondeposit.com/theicondeposit:124)
+* Original background illustration courtesy of: [Fabricio Rosa Marques](http://fabric8.de/) via [The Pattern Library](http://thepatternlibrary.com/#science)
+* Original facial expression icons courtesy of: [Megan Sheehan](http://megansheehan.info/) via [IconDeposit](http://www.icondeposit.com/theicondeposit:124)
