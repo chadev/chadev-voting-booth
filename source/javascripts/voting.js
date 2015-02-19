@@ -30,9 +30,9 @@ CHADEV.votingBooth = {
     }
 
     this.firebaseRef = new Firebase("https://chadev-voting-"+ this.db +".firebaseio.com/");
-    console.log("using " + this.db + " firebase db")
+    console.log("Using Firebase DB", this.db)
 
-    console.log("Initializing voting booth ("+ this.mode +" mode)")
+    console.log("Initializing voting booth", this.mode)
     $('.voting-booth').addClass('voting-booth-mode-' + this.mode);
 
     // Forcing to go online - sometimes app gets disconnected
@@ -47,7 +47,6 @@ CHADEV.votingBooth = {
       endEventType   = 'touchend';
     }
 
-    console.log('CHADEV.votingBooth.mode',CHADEV.votingBooth.mode)
     if(!IS_VOTING_DAY && CHADEV.votingBooth.db == 'prod') {
       this.changeState('closed');
     } else {
