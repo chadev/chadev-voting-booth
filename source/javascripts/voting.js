@@ -71,10 +71,8 @@ CHADEV.votingBooth = {
       // Send data to Firebase
       var voteItem = $(this).parent();
       CHADEV.votingBooth.votesRef.push({
-        vote_lunch: {
-          ended_at: Firebase.ServerValue.TIMESTAMP,
-          vote: voteItem.data('vote')
-        }
+        ended_at: Firebase.ServerValue.TIMESTAMP,
+        vote: voteItem.data('vote')
       }, function(error) {
         if(error) {
           alert("Data could not be saved :( Jordan has failed you.");
@@ -133,18 +131,14 @@ CHADEV.votingBooth = {
     var sixDays = 6 * 24 * 60 * 60 * 1000;
     var startAt = new Date().getTime() - sixDays;
 
-    ref.on("value", function(snapshot) {
+    ref.orderByChild('ended_at').startAt(startAt).on("value", function(snapshot) {
       var totalVotes = snapshot.numChildren();
       var dislikeVotes = 0;
       var neutralVotes = 0;
       var likeVotes = 0;
 
       snapshot.forEach(function(voteSnapshot) {
-        if(voteSnapshot.child('vote_lunch/ended_at').val() < startAt) {
-          return;
-        }
-
-        switch(voteSnapshot.child('vote_lunch/vote').val()) {
+        switch(voteSnapshot.child('vote').val()) {
           case "dislike":
             dislikeVotes += 1;
             break;
