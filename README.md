@@ -42,7 +42,14 @@ Short URL: http://git.io/booth (no need to add ?mode=kiosk, it's already set in 
 
 ### Credits
 
-Created by: [Jordan Isip](http://jordanisip.com) ([@fixie](http://twitter.com/fixie))
+Created by: 
+
+* [Jordan Isip](http://jordanisip.com) ([@fixie](http://twitter.com/fixie))
+
+Contributors:
+
+* Chris Keathley - [@keathley](http://github.com/keathley) - https://twitter.com/ChrisKeathley
+
 
 Original background illustration courtesy of: [Fabricio Rosa Marques](http://fabric8.de/) via [The Pattern Library](http://thepatternlibrary.com/#science)
 
