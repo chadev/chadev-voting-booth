@@ -10,7 +10,7 @@ CHADEV.votingBooth = {
       case "demo":
         this.mode = "demo"
         this.db = "demo"
-        this.multipleVotes = true;
+        this.multipleVotes = false;
         this.closeResults = true;
         this.thanksDelay = 1400;
         $.cookie('mode', this.mode, { expires: 1 });
