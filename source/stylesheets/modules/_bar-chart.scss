@@ -17,7 +17,7 @@
   position: relative;
 }
 
-.bar-chart-item-label, .bar-chart-item-bar {
+.bar-chart-item-label, .bar-chart-item-bar, .bar-chart-item-count {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -26,13 +26,17 @@
 
 .bar-chart-item-count {
   opacity: 0;
-  margin-top: -2.5rem;
+  bottom: -3rem;
+  font-size: $font-size-xl;
+  @include media($screen-md) {
+    bottom: -4rem;
+  }
+  @include media($screen-lg) {
+    bottom: -5rem;
+  }
   .voting-booth.has-seen-results & {
     @include animation(bounceIn 1s);
     @include animation-fill-mode(forwards);
-    @include media($screen-md) {
-      margin-top: -3.2rem;
-    }
   }
 }
 
@@ -49,7 +53,7 @@
 
 .bar-chart-item-label {
   font-size: $font-size-xxxxl * 2;
-  bottom: 0;
+  bottom: -0.5rem;
   line-height: 0;
   z-index: 5000;
 }

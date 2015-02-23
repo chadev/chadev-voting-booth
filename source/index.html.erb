@@ -44,9 +44,8 @@
         <ul class="bar-chart">
           <% voting_booth_items.each do |vote| %>
             <li class="bar-chart-item is-<%= vote[:emotion] %>">
-              <div class="bar-chart-item-bar"">
-                <div class="bar-chart-item-count">16</div>
-              </div>
+              <div class="bar-chart-item-count"></div>
+              <div class="bar-chart-item-bar"></div>
               <i class="bar-chart-item-label icon-face-<%= vote[:emotion] %>"></i>
             </li>
           <% end %>
