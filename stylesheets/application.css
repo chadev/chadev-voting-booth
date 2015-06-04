@@ -910,6 +910,21 @@ body {
     -moz-animation-fill-mode: forwards;
     animation-fill-mode: forwards; }
 
+/* line 236, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
+.voting-booth-demo-indicator {
+  display: none;
+  width: 200px;
+  padding: 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+  background: #DB1515;
+  color: #FFF; }
+  /* line 246, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_voting-booths.scss */
+  .voting-booth-mode-demo .voting-booth-demo-indicator {
+    display: block; }
+
 /* line 1, /Users/fixie/projects/chadev-voting-booth/source/stylesheets/modules/_bar-chart.scss */
 .bar-chart {
   height: 100%;
