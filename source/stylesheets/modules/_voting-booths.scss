@@ -232,3 +232,18 @@
 .voting-booth-closed-prompt-subtitle {
   @extend .voting-booth-thanks-prompt-subtitle;
 }
+
+.voting-booth-demo-indicator {
+  display: none;
+  width: 200px;
+  padding: 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+  background: $red;
+  color: $white;
+  .voting-booth-mode-demo & {
+    display: block;
+  }
+}
